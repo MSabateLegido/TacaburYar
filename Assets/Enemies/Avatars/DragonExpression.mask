@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DragonExpression
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Body
+    m_Weight: 0
+  - m_Path: Body/Spine01
+    m_Weight: 0
+  - m_Path: Body/Spine01/RearLeg01_L
+    m_Weight: 0
+  - m_Path: Body/Spine01/RearLeg01_L/RearLeg02_L
+    m_Weight: 0
+  - m_Path: Body/Spine01/RearLeg01_L/RearLeg02_L/RearLeg03_L
+    m_Weight: 0
+  - m_Path: Body/Spine01/RearLeg01_R
+    m_Weight: 0
+  - m_Path: Body/Spine01/RearLeg01_R/RearLeg02_R
+    m_Weight: 0
+  - m_Path: Body/Spine01/RearLeg01_R/RearLeg02_R/RearLeg03_R
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/Belly01
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/Belly02
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/FrontLeg01_L
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/FrontLeg01_L/FrontLeg02_L
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/FrontLeg01_L/FrontLeg02_L/FrontLeg03_L
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/FrontLeg01_R
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/FrontLeg01_R/FrontLeg02_R
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/FrontLeg01_R/FrontLeg02_R/FrontLeg03_R
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/Head
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/Head/EyeRoot
+    m_Weight: 1
+  - m_Path: Body/Spine01/Spine02/Head/EyeRoot/Eye01_L
+    m_Weight: 1
+  - m_Path: Body/Spine01/Spine02/Head/EyeRoot/Eye01_R
+    m_Weight: 1
+  - m_Path: Body/Spine01/Spine02/Head/EyeRoot/Eye02_L
+    m_Weight: 1
+  - m_Path: Body/Spine01/Spine02/Head/EyeRoot/Eye02_R
+    m_Weight: 1
+  - m_Path: Body/Spine01/Spine02/Head/Jaw01
+    m_Weight: 1
+  - m_Path: Body/Spine01/Spine02/Head/Jaw01/Jaw02
+    m_Weight: 1
+  - m_Path: Body/Spine01/Spine02/Head/UpperJaw01
+    m_Weight: 1
+  - m_Path: Body/Spine01/Spine02/Head/UpperJaw01/UpperJaw02
+    m_Weight: 1
+  - m_Path: Body/Spine01/Spine02/WingRoot
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/WingRoot/Wing01_L
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/WingRoot/Wing01_L/Wing02_L
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/WingRoot/Wing01_L/Wing02_L/Wing03_L
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/WingRoot/Wing01_L/Wing02_L/Wing03_L/Wing04_L
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/WingRoot/Wing01_L/Wing02_L/Wing03_L/Wing04_L/Wing05_L
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/WingRoot/Wing01_L/Wing02_L/Wing03_L/Wing06_L
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/WingRoot/Wing01_L/Wing02_L/Wing03_L/Wing06_L/Wing07_L
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/WingRoot/Wing01_R
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/WingRoot/Wing01_R/Wing02_R
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/WingRoot/Wing01_R/Wing02_R/Wing03_R
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/WingRoot/Wing01_R/Wing02_R/Wing03_R/Wing04_R
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/WingRoot/Wing01_R/Wing02_R/Wing03_R/Wing04_R/Wing05_R
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/WingRoot/Wing01_R/Wing02_R/Wing03_R/Wing06_R
+    m_Weight: 0
+  - m_Path: Body/Spine01/Spine02/WingRoot/Wing01_R/Wing02_R/Wing03_R/Wing06_R/Wing07_R
+    m_Weight: 0
+  - m_Path: Body/Tail01
+    m_Weight: 0
+  - m_Path: Body/Tail01/Tail02
+    m_Weight: 0
+  - m_Path: Body/Tail01/Tail02/Tail03
+    m_Weight: 0
+  - m_Path: Dragon
+    m_Weight: 0

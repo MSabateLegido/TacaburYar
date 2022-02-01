@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60670f5065d295b448e9fb25fd8ff6bf, type: 3}
+  m_Name: Belt0
+  m_EditorClassIdentifier: 
+  itemToCraftSprite: {fileID: 21300000, guid: aaa4d8458f6558c4082e04ce7556eb97, type: 3}
+  itemToCraftPrefab: {fileID: 6784201167940808242, guid: 314beb0fd2db7004b9a374839c394e1f, type: 3}
+  items: 000000000100000002000000
+  itemsQuantity: 040000000300000001000000
