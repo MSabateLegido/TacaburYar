@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EquipmentItemSelector : MonoBehaviour
 {
+    public UnityEvent onEquipmentChange;
 
     [SerializeField] private EquipmentItemType equipmentType;
     [SerializeField] private EquipmentItem[] itemsAvailable;
@@ -30,7 +32,7 @@ public class EquipmentItemSelector : MonoBehaviour
         currentItem = itemsAvailable[newItem.GetItemIndex()];
         currentItem.gameObject.SetActive(true);
         equipmentSlot.ChangeEquipmentImage(newItem.GetSprite());
-        Player.Instance().Stats().UpdatePlayerStats();
+        onEquipmentChange.Invoke();
     }
 
     public void UnequipItem()

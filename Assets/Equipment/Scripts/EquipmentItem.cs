@@ -5,20 +5,19 @@ using UnityEngine;
 
 public enum EquipmentItemType
 {
+    Shield,
+    Sword,
     Helmet,
     Shoulders,
     Armor,
-    Sword,
-    Shield,
     Belt,
     Gloves,
     Boots
 }
 public class EquipmentItem : Item
 {
-
     [SerializeField] protected EquipmentItemType equipmentItemType;
-    [SerializeField] protected Stats itemStats;
+    [SerializeField] protected StatsScriptableObject itemStats;
     [SerializeField] protected int itemIndex;
 
     protected void DefaultEquipmentItemSetup()
@@ -38,7 +37,7 @@ public class EquipmentItem : Item
 
     public Stats GetStats()
     {
-        return itemStats;
+        return itemStats.GetStats();
     }
 
     public static string GetEquipmentItemTypeString(EquipmentItemType type)

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46055887797e150439ef6cb2ceb12eff, type: 3}
   m_Name: Level2
   m_EditorClassIdentifier: 
-  experienceToNextLevel: 1200
-  statsUpgrade: {fileID: 11400000, guid: 293ea87ab02303e40b8214796672f5e3, type: 2}
+  experienceToLevelUp: 0
+  statsUpgrade: {fileID: 11400000, guid: 24ae1c70341d62f4aa79594de8148e44, type: 2}

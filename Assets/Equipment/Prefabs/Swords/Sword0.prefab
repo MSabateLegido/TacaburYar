@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1117857127094749550
 Transform:
   m_ObjectHideFlags: 0
@@ -97,6 +97,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 8
   itemSprite: {fileID: 21300000, guid: 78f7ed3c70f6a5f42a68b6bfa4512162, type: 3}
-  equipmentItemType: 3
-  itemStats: {fileID: 11400000, guid: 03914432e54afb84eb80ec79fd9789b6, type: 2}
+  equipmentItemType: 1
+  itemStats: {fileID: 11400000, guid: 9f3949f2bd787024787c3605060fee91, type: 2}
   itemIndex: 0

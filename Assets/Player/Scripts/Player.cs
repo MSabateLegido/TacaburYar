@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
         playerLevel = GetComponent<PlayerLevel>();
         playerUI = GetComponent<PlayerUI>();
         inventory = GetComponent<Inventory>();
-        equipment = GetComponent<PlayerEquipmentSet>();
+        equipment = GetComponentInChildren<PlayerEquipmentSet>();
         instance = this;
     }
 

@@ -5,22 +5,22 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/LevelData", order = 1)]
 public class LevelData : ScriptableObject
 {
-    [SerializeField] private int experienceToNextLevel;
-    [SerializeField] private Stats statsUpgrade;
+    [SerializeField] private int experienceToLevelUp;
+    [SerializeField] private StatsScriptableObject statsUpgrade;
 
     public int GetExperienceToNextLevel()
     {
-        return experienceToNextLevel;
+        return experienceToLevelUp;
     }
 
-    public Stats GetStatsUpgrade()
+    public Stats GetLevelStats()
     {
-        return statsUpgrade;
+        return statsUpgrade.GetStats();
     }
 
     public void SetLevelData(LevelData newData)
     {
-        experienceToNextLevel = newData.GetExperienceToNextLevel();
-        statsUpgrade = newData.GetStatsUpgrade();
+        experienceToLevelUp = newData.GetExperienceToNextLevel();
+        //statsUpgrade = newData.GetStatsUpgrade();
     }
 }

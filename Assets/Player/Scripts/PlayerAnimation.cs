@@ -12,6 +12,14 @@ public class PlayerAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    private void Start()
+    {
+        Player.Instance().Attack().onRecieveHit.AddListener(AnimateHit);
+        Player.Instance().Attack().onEndHit.AddListener(EndHitAnimation);
+        Player.Instance().Attack().onPerformAttack.AddListener(OnPerformAttack);
+        Player.Instance().Attack().onEndAttack.AddListener(OnEndAttack);
+    }
+
     public void SetMovementParameter(float blendTreeNewValue)
     {
         animator.SetFloat("Movement", blendTreeNewValue);
@@ -32,20 +40,21 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetBool("Hited", true);
     }
 
-    public void EndHitedAnimation()
+    public void EndHitAnimation()
     {
         animator.SetBool("Hited", false);
     }
 
-    public void InvulnerabilityDuring(float duration)
+    private void OnPerformAttack()
     {
-        Sequence invulnerableSeq = DOTween.Sequence();
-        invulnerableSeq.Append(transform.DOScale(Vector3.zero, 0.1f).SetEase(Ease.Linear))
-                        .Append(transform.DOScale(Vector3.one, 0.1f).SetEase(Ease.Linear))
-                        .SetDelay(duration/3)
-                        .SetLoops(3);
-                                   //transform.DOScale(Vector3.zero, 0.1f).SetEase(Ease.Linear);
-        
-        ;
+        animator.SetBool("Attack", true);
     }
+
+    private void OnEndAttack()
+    {
+        animator.SetBool("Attack", true);
+    }
+
+    
+
 }

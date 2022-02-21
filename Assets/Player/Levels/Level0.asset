@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc86c022d3a6f884fa3166db1d9fd663, type: 3}
-  m_Name: Level2StatsUpgrade
+  m_Script: {fileID: 11500000, guid: 46055887797e150439ef6cb2ceb12eff, type: 3}
+  m_Name: Level0
   m_EditorClassIdentifier: 
-  maxHP: 10
-  defense: 1
-  attack: 1
-  speed: 0
+  experienceToLevelUp: 1
+  statsUpgrade: {fileID: 11400000, guid: 1398f3ac69892934dab1a39f31bdfe39, type: 2}

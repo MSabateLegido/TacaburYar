@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
         enemyMovementToPlayer = GetComponent<EnemyMovement>();
         animations = GetComponent<EnemyAnimations>();
         enemyAttack = GetComponent<EnemyAttack>();
-        currentStats = ScriptableObject.CreateInstance<Stats>();
+        currentStats = new Stats(enemyData.GetEnemyStats());
         currentStats.SetStats(enemyData.GetEnemyStats());
     }
 

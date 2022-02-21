@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] Stats playerBaseStats;
+    [SerializeField] StatsScriptableObject playerBaseStats;
     private Stats currentStats;
 
     private int currentHp;
@@ -15,14 +15,21 @@ public class PlayerStats : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        currentStats = ScriptableObject.CreateInstance<Stats>();
-        playerEquipment = GetComponent<PlayerEquipmentSet>();
+        currentStats = new Stats(playerBaseStats.GetStats());
+        playerEquipment = GetComponentInChildren<PlayerEquipmentSet>();
         playerLevel = GetComponent<PlayerLevel>();
         playerUI = GetComponent<PlayerUI>();
+
+        
     }
 
     private void Start()
     {
+        Player.Instance().Level().onLevelUp.AddListener(OnLevelUp);
+        foreach(EquipmentItemSelector selector in Player.Instance().Equipment().GetEquipmentSelectors())
+        {
+            selector.onEquipmentChange.AddListener(UpdatePlayerStats);
+        }
         UpdatePlayerStats();
         currentHp = currentStats.GetHP();
     }
@@ -30,15 +37,22 @@ public class PlayerStats : MonoBehaviour
 
     public void UpdatePlayerStats()
     {
-        int maxHpBeforeUpdate = currentStats.GetHP();
-        currentStats.SetStats(playerBaseStats);
+        currentStats.SetStats(playerBaseStats.GetStats());
         currentStats.AddStats(playerEquipment.GetEquipmentStats());
         currentStats.AddStats(playerLevel.GetLevelStats());
-        if (maxHpBeforeUpdate != currentStats.GetHP())
-        {
-            playerUI.UpdateLifeBarStats(currentHp, currentStats.GetHP());
-        }
-        playerUI.UpdateLifeBarByHit(currentHp, currentStats.GetHP());
+        playerUI.UpdateLifeBarStats(currentHp, currentStats.GetHP());
+    }
+
+    private void OnLevelUp()
+    {
+        UpdatePlayerStats();
+        HealPlayer();
+    }
+
+    private void HealPlayer()
+    {
+        currentHp = currentStats.GetHP();
+        playerUI.UpdateLifeBarStats(currentHp, currentStats.GetHP());
     }
 
     public void RecieveHit(int damageRecieved)

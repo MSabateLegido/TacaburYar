@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyData : ScriptableObject
 {
 
-    [SerializeField] Stats defaultEnemyStats;
+    [SerializeField] StatsScriptableObject defaultEnemyStats;
     [SerializeField] GameObject[] itemsToDrop;
     [SerializeField] float[] dropProbabilities;
     [SerializeField] int minXPGiven;
@@ -14,7 +14,7 @@ public class EnemyData : ScriptableObject
 
     public Stats GetEnemyStats()
     {
-        return defaultEnemyStats;
+        return defaultEnemyStats.GetStats();
     }
 
     public float[] GetDropProbabilities()

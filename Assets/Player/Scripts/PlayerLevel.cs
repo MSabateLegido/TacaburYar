@@ -1,27 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerLevel : MonoBehaviour
 {
+    public UnityEvent onLevelUp;
+
     private int playerLevel;
     private int currentExperience;
     private int experienceToNextLevel;
 
     [SerializeField] LevelData[] levelsData;
-    private LevelData currentLevelData;
 
     private void Awake()
     {
-        currentLevelData = ScriptableObject.CreateInstance<LevelData>();
-        currentLevelData.SetLevelData(levelsData[0]);
-        playerLevel = 1;
-        experienceToNextLevel = currentLevelData.GetExperienceToNextLevel();
+        experienceToNextLevel = GetCurrentLevelData().GetExperienceToNextLevel();
     }
 
     private void Start()
     {
-        Player.Instance().Stats().UpdatePlayerStats();
+        //Player.Instance().Stats().UpdatePlayerStats();
     }
 
     public void GainExperience(int experience)
@@ -40,10 +39,9 @@ public class PlayerLevel : MonoBehaviour
 
     private void LevelUp()
     {
-        currentLevelData.SetLevelData(levelsData[playerLevel]);
         playerLevel++;
-        experienceToNextLevel += currentLevelData.GetExperienceToNextLevel();
-        Player.Instance().Stats().UpdatePlayerStats();
+        experienceToNextLevel += levelsData[playerLevel-1].GetExperienceToNextLevel();
+        onLevelUp.Invoke();
     }
 
     public int GetLevel()
@@ -53,6 +51,11 @@ public class PlayerLevel : MonoBehaviour
 
     public Stats GetLevelStats()
     {
-        return currentLevelData.GetStatsUpgrade();
+        return GetCurrentLevelData().GetLevelStats();
+    }
+
+    private LevelData GetCurrentLevelData()
+    {
+        return levelsData[playerLevel];
     }
 }

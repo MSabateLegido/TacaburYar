@@ -10,6 +10,10 @@ public class PlayerEquipmentSet : MonoBehaviour
 
     [SerializeField] private EquipmentSetUI equipementUI;
 
+    private void Awake()
+    {
+        equipmentItems = GetComponentsInChildren<EquipmentItemSelector>();
+    }
     public EquipmentItem EquipNewItemAndReturnCurrent(EquipmentItem newEquipment)
     {
         int equipmentTypeIndex = (int)newEquipment.GetEquipmentType();
@@ -21,7 +25,7 @@ public class PlayerEquipmentSet : MonoBehaviour
 
     public Stats GetEquipmentStats()
     {
-        Stats auxStats = ScriptableObject.CreateInstance<Stats>();
+        Stats auxStats = new Stats();
         foreach (EquipmentItemSelector item in equipmentItems)
         { 
             auxStats.AddStats(item.GetCurrentEquipmentStats());  
@@ -40,5 +44,10 @@ public class PlayerEquipmentSet : MonoBehaviour
             equipementUI.CloseEquipmentUI();
         }
         
+    }
+
+    public EquipmentItemSelector[] GetEquipmentSelectors()
+    {
+        return equipmentItems;
     }
 }

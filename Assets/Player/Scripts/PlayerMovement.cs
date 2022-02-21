@@ -24,6 +24,10 @@ public class PlayerMovement : MonoBehaviour
         playerMovementVector = new Vector3();
         gameCamera = Camera.main;
         animations = GetComponent<PlayerAnimation>();
+        Player.Instance().Attack().onRecieveHit.AddListener(OnRecieveHit);
+        Player.Instance().Attack().onEndHit.AddListener(OnEndHit);
+        Player.Instance().Attack().onPerformAttack.AddListener(OnPerformAttack);
+        Player.Instance().Attack().onEndAttack.AddListener(OnEndAttack);
     }
 
     // Update is called once per frame
@@ -86,5 +90,25 @@ public class PlayerMovement : MonoBehaviour
     public void SetMovement(bool canMove)
     {
         this.canMove = canMove;
+    }
+
+    private void OnRecieveHit()
+    {
+        SetMovement(false);
+    }
+
+    private void OnEndHit()
+    {
+        SetMovement(true);
+    }
+
+    private void OnPerformAttack()
+    {
+        SetMovement(false);
+    }
+
+    private void OnEndAttack()
+    {
+        SetMovement(true);
     }
 }

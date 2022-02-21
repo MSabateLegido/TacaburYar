@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc86c022d3a6f884fa3166db1d9fd663, type: 3}
+  m_Script: {fileID: 11500000, guid: c77c8f2866b82514f8c3087f7f00afeb, type: 3}
   m_Name: Sword2
   m_EditorClassIdentifier: 
-  maxHP: 0
-  defense: 0
-  attack: 0
-  speed: 0
+  stats:
+    maxHP: 0
+    defense: 0
+    attack: 0
+    speed: 0

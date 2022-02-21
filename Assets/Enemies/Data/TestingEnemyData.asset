@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9bcfef0f4c750445b494f9adcf37aba, type: 3}
   m_Name: TestingEnemyData
   m_EditorClassIdentifier: 
-  defaultEnemyStats: {fileID: 11400000, guid: 6c8bd787f79c6ff47aea23b4c232d310, type: 2}
+  defaultEnemyStats: {fileID: 11400000, guid: d5875f352c8595a43aa5606a7e8636cf, type: 2}
   itemsToDrop:
   - {fileID: 9056106926111485642, guid: cfc9c57253115b742b528708f0107a4a, type: 3}
   - {fileID: 3577592477350651684, guid: 18616ee3e0f8ae141b9b87ac1a276d6c, type: 3}

@@ -26,7 +26,7 @@ public class PlayerUI : MonoBehaviour
     public void UpdateLifeBarStats(int currentHp, int maxHp)
     {
         hpText.text = currentHp + "/" + maxHp;
-        hpBar.DOFillAmount((float)currentHp / (float)maxHp, 0.75f);
-        hpRedBar.DOFillAmount((float)currentHp / (float)maxHp, 0.75f);
+        hpBar.fillAmount = currentHp / maxHp;
+        hpRedBar.fillAmount = currentHp / maxHp;
     }
 }

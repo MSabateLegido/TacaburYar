@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private Animator animator;
-    private PlayerMovement movement;
+
+    public UnityEvent onRecieveHit;
+    public UnityEvent onEndHit;
+    public UnityEvent onPerformAttack;
+    public UnityEvent onEndAttack;
+
 
     private bool attacking = false;
 
@@ -16,8 +21,6 @@ public class PlayerAttack : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
-        movement = GetComponent<PlayerMovement>();
     }
 
     private void Update()
@@ -52,32 +55,28 @@ public class PlayerAttack : MonoBehaviour
         if (!invulnerable)
         {
             Player.Instance().Stats().RecieveHit(damageRecieved);
-            Player.Instance().Movement().SetMovement(false);
-            Player.Instance().Animations().AnimateHit();
+            onRecieveHit.Invoke();
             invulnerable = true;
             timeInvulnerableLeft = timeInvulnerableAfterHit;
             gameObject.layer = Player.NON_HITABLE_LAYER;
         }
     }
-
+    //Called by the animation RecieveHit
     public void EndHit()
     {
-        Player.Instance().Movement().SetMovement(true);
-        Player.Instance().Animations().EndHitedAnimation();
+        onEndHit.Invoke();
     }
 
     public void PerformAttack()
     {
-        movement.SetMovement(false);
+        onPerformAttack.Invoke();
         attacking = true;
-        animator.SetBool("Attack", true);
     }
-
+    //Called by the animation Attack
     public void EndAttack()
     {
-        movement.SetMovement(true);
+        onEndAttack.Invoke();
         attacking = false;
-        animator.SetBool("Attack", false);
     }
 
     private void OnAttack()

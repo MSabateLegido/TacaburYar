@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5411697884939630592}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -0.24408853, z: -1.0787344}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!137 &2405889713676403040
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -162,6 +162,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 8
   itemSprite: {fileID: 21300000, guid: 0c249a4976de26a43afdc9b8a20a9250, type: 3}
-  equipmentItemType: 2
-  itemStats: {fileID: 11400000, guid: 60a3d26596ef4444e977c9a6c3910e60, type: 2}
+  equipmentItemType: 4
+  itemStats: {fileID: 11400000, guid: 3da26ec82bb832b4186be8528a6a5e8c, type: 2}
   itemIndex: 0

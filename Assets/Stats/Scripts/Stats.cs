@@ -2,14 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Stats", order = 1)]
-public class Stats : ScriptableObject
+[System.Serializable]
+public class Stats
 {
     [SerializeField] int maxHP;
     [SerializeField] int defense;
-    [SerializeField] int attack;
+    [SerializeField] private int attack;
     [SerializeField] float speed;
     //[0]: HP, [1]: Defense, [2]: Attack, [3]: Movement 
+    public Stats()
+    {
+        maxHP = 0;
+        defense = 0;
+        attack = 0;
+        speed = 0;
+    }
+    public Stats(Stats defaultStats)
+    {
+        maxHP = defaultStats.GetHP();
+        defense = defaultStats.GetDefense();
+        attack = defaultStats.GetAttack();
+        speed = defaultStats.GetSpeed();
+    }
 
     public int GetHP()
     {
