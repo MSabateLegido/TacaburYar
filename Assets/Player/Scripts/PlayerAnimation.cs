@@ -18,6 +18,7 @@ public class PlayerAnimation : MonoBehaviour
         Player.Instance().Attack().onEndHit.AddListener(EndHitAnimation);
         Player.Instance().Attack().onPerformAttack.AddListener(OnPerformAttack);
         Player.Instance().Attack().onEndAttack.AddListener(OnEndAttack);
+        Player.Instance().Equipment().onSwordEquipedChange.AddListener(OnChangeEquipedSword);
     }
 
     public void SetMovementParameter(float blendTreeNewValue)
@@ -52,9 +53,12 @@ public class PlayerAnimation : MonoBehaviour
 
     private void OnEndAttack()
     {
-        animator.SetBool("Attack", true);
+        animator.SetBool("Attack", false);
     }
 
-    
+    private void OnChangeEquipedSword(bool equiped)
+    {
+        animator.SetBool("SwordEquiped", equiped);
+    }
 
 }

@@ -1,18 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
+public class BoolEvent : UnityEvent<bool> { }
 public class PlayerEquipmentSet : MonoBehaviour
 {
+    [HideInInspector] public BoolEvent onSwordEquipedChange;
 
-    //Helmet, Shoulders, Armor, Sword, Shield, Belt, Gloves, Boots
+    //Shield, Sword, Helmet, Shoulders, Armor, Belt, Gloves, Boots
     [SerializeField] private EquipmentItemSelector[] equipmentItems;
 
     [SerializeField] private EquipmentSetUI equipementUI;
 
     private void Awake()
     {
+        onSwordEquipedChange = new BoolEvent();
         equipmentItems = GetComponentsInChildren<EquipmentItemSelector>();
+        
+    }
+
+    private void Start()
+    {
+        foreach (EquipmentItemSelector selector in equipmentItems)
+        {
+            selector.onEquipmentChange.AddListener(CheckEquipedSword);
+        }
     }
     public EquipmentItem EquipNewItemAndReturnCurrent(EquipmentItem newEquipment)
     {
@@ -21,6 +34,11 @@ public class PlayerEquipmentSet : MonoBehaviour
         EquipmentItem currentEquipedItem = equipmentItems[equipmentTypeIndex].GetCurrentEquipmentItem();
         equipmentItems[equipmentTypeIndex].ChangeCurrentItem(newEquipment);
         return currentEquipedItem;
+    }
+
+    private void CheckEquipedSword()
+    {
+        onSwordEquipedChange.Invoke(equipmentItems[(int)EquipmentItemType.Sword].IsEquiped());
     }
 
     public Stats GetEquipmentStats()

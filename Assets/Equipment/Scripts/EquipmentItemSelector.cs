@@ -17,7 +17,8 @@ public class EquipmentItemSelector : MonoBehaviour
 
     private void Awake()
     {
-        SetCurrentItem();        
+
+        SetCurrentItem();
     }
 
     private void SetCurrentItem()
@@ -41,11 +42,10 @@ public class EquipmentItemSelector : MonoBehaviour
         {
             currentItem.gameObject.SetActive(false);
             defaultItem.gameObject.SetActive(true);
-
-            EquipmentItem auxItem = currentItem;
+            Player.Instance().UnequipItem(currentItem);
             currentItem = defaultItem;
             equipmentSlot.SetSlotToDefault();
-            Player.Instance().UnequipItem(auxItem);
+            onEquipmentChange.Invoke();
         }
     }
 

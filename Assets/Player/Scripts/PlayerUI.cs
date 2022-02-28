@@ -10,7 +10,8 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private Image hpBar;
     [SerializeField] private Image hpRedBar;
-    //erializeField] private TextMeshProUGUI hpText;
+    [SerializeField] private Camera mapCamera;
+    
     void Start()
     {
         
@@ -28,5 +29,10 @@ public class PlayerUI : MonoBehaviour
         hpText.text = currentHp + "/" + maxHp;
         hpBar.fillAmount = currentHp / maxHp;
         hpRedBar.fillAmount = currentHp / maxHp;
+    }
+
+    private void OnOpenMap()
+    {
+        mapCamera.gameObject.SetActive(!mapCamera.gameObject.activeSelf);
     }
 }

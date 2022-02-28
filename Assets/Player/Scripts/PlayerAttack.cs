@@ -6,21 +6,22 @@ using UnityEngine.Events;
 public class PlayerAttack : MonoBehaviour
 {
 
-    public UnityEvent onRecieveHit;
-    public UnityEvent onEndHit;
-    public UnityEvent onPerformAttack;
-    public UnityEvent onEndAttack;
+    [HideInInspector] public UnityEvent onRecieveHit;
+    [HideInInspector] public UnityEvent onEndHit;
+    [HideInInspector] public UnityEvent onPerformAttack;
+    [HideInInspector] public UnityEvent onEndAttack;
 
 
     private bool attacking = false;
-
+    private bool swordEquiped;
     private bool invulnerable;
     private float timeInvulnerableLeft;
     [SerializeField] private float timeInvulnerableAfterHit;
 
 
-    private void Awake()
+    private void Start()
     {
+        Player.Instance().Equipment().onSwordEquipedChange.AddListener(OnSwordEquipedChange);
     }
 
     private void Update()
@@ -75,13 +76,14 @@ public class PlayerAttack : MonoBehaviour
     //Called by the animation Attack
     public void EndAttack()
     {
+        Debug.Log("EndAttack");
         onEndAttack.Invoke();
         attacking = false;
     }
 
     private void OnAttack()
     {
-        if (!attacking)
+        if (!attacking && swordEquiped)
         {
             PerformAttack();
         }
@@ -91,5 +93,10 @@ public class PlayerAttack : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(transform.position + transform.forward * 1.2f + transform.up, 0.9f);
+    }
+
+    private void OnSwordEquipedChange(bool equiped)
+    {
+        swordEquiped = equiped;
     }
 }
