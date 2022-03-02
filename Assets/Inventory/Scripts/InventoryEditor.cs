@@ -10,7 +10,7 @@ public class InventoryEditor : MonoBehaviour
     {
         //Inventory
         //EquimentSet
-        GameObject parentGO = GameObject.Find("UserInterface");
+        /*GameObject parentGO = GameObject.Find("UserInterface");
         RectTransform[] children = parentGO.GetComponentsInChildren<RectTransform>(true);
         foreach (RectTransform child in children)
         {
@@ -19,9 +19,9 @@ public class InventoryEditor : MonoBehaviour
                 child.gameObject.SetActive(true);
             }
         }
-
+        */
         //PlayerCamera
-        GameObject.Find("PlayerTest").GetComponentInChildren<Camera>(true).gameObject.SetActive(true);
+        GameObject.Find("Player").GetComponentInChildren<Camera>(true).gameObject.SetActive(true);
         
     }
 
@@ -30,7 +30,7 @@ public class InventoryEditor : MonoBehaviour
     {
         //Inventory
         //EquimentSet
-        GameObject parentGO = GameObject.Find("UserInterface");
+        /*GameObject parentGO = GameObject.Find("UserInterface");
         RectTransform[] children = parentGO.GetComponentsInChildren<RectTransform>(true);
         foreach (RectTransform child in children)
         {
@@ -39,8 +39,8 @@ public class InventoryEditor : MonoBehaviour
                 child.gameObject.SetActive(false);
             }
         }
-
+        */
         //PlayerCamera
-        GameObject.Find("PlayerTest").GetComponentInChildren<Camera>(true).gameObject.SetActive(false);
+        GameObject.Find("Player").GetComponentInChildren<Camera>(true).gameObject.SetActive(false);
     }
 }

@@ -11,6 +11,7 @@ public class Mission : MonoBehaviour
     //Explorar zones, buscar items, matar enemics, parlar amb algu, anar a, recollir recursos, etc.
     private MissionAction[] actionsToCompleteMission;
     private int currentAction;
+    
 
     //private Recompense recompenseToCompleteMission;
 
@@ -27,6 +28,7 @@ public class Mission : MonoBehaviour
 
     public void CompleteAction()
     {
+        actionsToCompleteMission[currentAction].gameObject.SetActive(false);
         currentAction++;
         StartNextAction();
     }
