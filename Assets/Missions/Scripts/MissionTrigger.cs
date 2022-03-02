@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class MissionTrigger : MonoBehaviour
 {
-    public Mission missionToActive;
+    [SerializeField] private MissionAction actionToComplete;
 
     private void OnTriggerEnter(Collider other)
     {
-        missionToActive.InitializeMission();
+        actionToComplete.CompleteAction();
     }
 }
