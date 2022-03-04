@@ -5,22 +5,23 @@ using UnityEngine.Events;
 
 public class MissionManager : MonoBehaviour
 {
+    public MissionEvent onStartMission;
     private Mission[] missions;
     private int currentMission;
+    private MissionsUI missionsUI;
 
     private void Awake()
     {
         missions = GetComponentsInChildren<Mission>(true);
-        Mission.OnEndMission = new UnityEvent();
-        Mission.OnEndMission.AddListener(EndCurrentMission);
-        Debug.Log(missions.Length);
-        StartNextMission();
+        missionsUI = GetComponentInChildren<MissionsUI>();
+        Mission.onEndMission = new UnityEvent();
+        Mission.onStartNewAction = new MissionActionEvent();
+        onStartMission = new MissionEvent();
     }
 
-    private void EndCurrentMission()
+    private void Start()
     {
-        missions[currentMission].gameObject.SetActive(false);
-        currentMission++;
+        Mission.onEndMission.AddListener(EndCurrentMission);
         StartNextMission();
     }
 
@@ -29,11 +30,19 @@ public class MissionManager : MonoBehaviour
         if (MissionExist())
         {
             missions[currentMission].gameObject.SetActive(true);
+            onStartMission.Invoke(missions[currentMission]);
         }
         else
         {
             Debug.Log("No more missions");
         }
+    }
+
+    private void EndCurrentMission()
+    {
+        missions[currentMission].gameObject.SetActive(false);
+        currentMission++;
+        StartNextMission();
     }
 
     private bool MissionExist()

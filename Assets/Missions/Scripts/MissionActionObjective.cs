@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MissionActionObjective : MonoBehaviour
 {
-    private string objective;
+    [SerializeField] private string objective;
 
 
     public string GetObjective()

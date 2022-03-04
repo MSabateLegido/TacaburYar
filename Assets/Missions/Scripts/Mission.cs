@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Timeline;
 
+public class MissionEvent : UnityEvent<Mission> { }
+public class MissionActionEvent : UnityEvent<MissionAction> { }
 public class Mission : MonoBehaviour
 {
-    public static UnityEvent OnEndMission;
-    //Actions poden ser:
-    //Explorar zones, buscar items, matar enemics, parlar amb algu, anar a, recollir recursos, etc.
+    public static UnityEvent onEndMission;
+    public static MissionActionEvent onStartNewAction;
+    [SerializeField] private string missionName;
     private MissionAction[] actionsToCompleteMission;
     private int currentAction;
     
@@ -22,14 +24,8 @@ public class Mission : MonoBehaviour
 
     public void InitializeMission()
     {
-        actionsToCompleteMission = GetComponentsInChildren<MissionAction>();
+        actionsToCompleteMission = GetComponentsInChildren<MissionAction>(true);
         currentAction = 0;
-    }
-
-    public void CompleteAction()
-    {
-        actionsToCompleteMission[currentAction].gameObject.SetActive(false);
-        currentAction++;
         StartNextAction();
     }
 
@@ -38,21 +34,39 @@ public class Mission : MonoBehaviour
         if (ActionExists())
         {
             actionsToCompleteMission[currentAction].gameObject.SetActive(true);
+            onStartNewAction.Invoke(actionsToCompleteMission[currentAction]);
         } 
         else
         {
             CompleteMission();
         }
     }
+    public void CompleteAction()
+    {
+        actionsToCompleteMission[currentAction].gameObject.SetActive(false);
+        currentAction++;
+        StartNextAction();
+    }
 
     private void CompleteMission()
     {
-        //recompenseToCompleteMission.Reward();
-        OnEndMission.Invoke();
+        onEndMission.Invoke();
     }
-    
+
     private bool ActionExists()
     {
         return currentAction < actionsToCompleteMission.Length;
     }
+
+    public MissionAction GetCurrentAction()
+    {
+        return actionsToCompleteMission[currentAction];
+    }
+    
+    public string GetMissionName()
+    {
+        return missionName;
+    }
+
+    
 }

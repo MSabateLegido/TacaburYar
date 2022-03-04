@@ -4,8 +4,10 @@ using UnityEngine;
 
 public abstract class MissionAction : MonoBehaviour
 {
-    private MissionActionObjective objective;
+    [SerializeField] private string objective;
 
+
+    public string GetObjective() { return objective; }
     public virtual void CompleteAction()
     {
         GetComponentInParent<Mission>().CompleteAction();
