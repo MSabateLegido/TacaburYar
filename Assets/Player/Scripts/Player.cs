@@ -74,8 +74,7 @@ public class Player : MonoBehaviour
         if (!interacting)
         {
             lookingInventory = !lookingInventory;
-            inventory.OpenOrCloseInventory(lookingInventory);
-            equipment.OpenOrCloseEquipmentUI(lookingInventory);
+            playerCamera.gameObject.SetActive(lookingInventory);
             playerMovement.SetMovement(!lookingInventory);
         }
     }

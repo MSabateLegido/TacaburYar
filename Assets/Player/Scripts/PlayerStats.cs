@@ -32,6 +32,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
+        Player.Instance().Attack().onRecieveDamage.AddListener(RecieveDamage);
         Player.Instance().Level().onLevelUp.AddListener(OnLevelUp);
         foreach(EquipmentItemSelector selector in Player.Instance().Equipment().GetEquipmentSelectors())
         {
@@ -62,9 +63,9 @@ public class PlayerStats : MonoBehaviour
         playerUI.UpdateLifeBarStats(currentHp, currentStats.GetHP());
     }
 
-    public void RecieveHit(int damageRecieved)
+    public void RecieveDamage(int damage)
     {
-        currentHp -= damageRecieved;
+        currentHp -= damage;
         playerUI.UpdateLifeBarByHit(currentHp, Player.Instance().Stats().GetCurrentStats().GetHP());
     }
 

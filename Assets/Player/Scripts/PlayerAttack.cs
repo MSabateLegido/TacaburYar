@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+public class IntEvent : UnityEvent<int> { }
 public class PlayerAttack : MonoBehaviour
 {
-
+    [HideInInspector] public IntEvent onRecieveDamage;
     [HideInInspector] public UnityEvent onRecieveHit;
     [HideInInspector] public UnityEvent onEndHit;
     [HideInInspector] public UnityEvent onPerformAttack;
@@ -18,7 +19,10 @@ public class PlayerAttack : MonoBehaviour
     private float timeInvulnerableLeft;
     [SerializeField] private float timeInvulnerableAfterHit;
 
-
+    private void Awake()
+    {
+        onRecieveDamage = new IntEvent();
+    }
     private void Start()
     {
         Player.Instance().Equipment().onSwordEquipedChange.AddListener(OnSwordEquipedChange);
@@ -55,7 +59,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (!invulnerable)
         {
-            Player.Instance().Stats().RecieveHit(damageRecieved);
+            onRecieveDamage.Invoke(damageRecieved);
             onRecieveHit.Invoke();
             invulnerable = true;
             timeInvulnerableLeft = timeInvulnerableAfterHit;

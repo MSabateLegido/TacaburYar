@@ -152,16 +152,10 @@ public class Inventory : MonoBehaviour
         inventoryUI.SetActive(true);
     }
 
-    public void OpenOrCloseInventory(bool open)
+    public void OpenOrCloseInventory()
     {
-        if (open)
-        {
-            OpenInventory();
-        } 
-        else
-        {
-            CloseInventory();
-        }
+        inventoryUI.SetActive(!inventoryUI.activeSelf);
+        
     }
 
 }
