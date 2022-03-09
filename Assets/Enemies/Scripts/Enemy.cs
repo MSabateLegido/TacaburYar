@@ -20,8 +20,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyData enemyData;
     private Stats currentStats;
 
-    private bool chasing = false;
-
     private bool attacking = false;
     
 
@@ -134,7 +132,6 @@ public class Enemy : MonoBehaviour
     {
         gameObject.layer = Player.NON_HITABLE_LAYER;
         stunned = true;
-        chasing = false;
         attacking = false;
         timeStunnedLeft = timeStunnedAfterHit;
         animations.GetHited();

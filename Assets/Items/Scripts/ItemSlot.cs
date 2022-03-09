@@ -73,7 +73,8 @@ public class ItemSlot : MonoBehaviour
         {
             EquipmentItem itemToEquip = (EquipmentItem)storedItem;
             EmptySlot();
-            Player.Instance().ChangeEquipmentItem(itemToEquip);
+            Player.Instance().Inventory().ChangeEquipmentItem(itemToEquip);
+            //ARREGLAR
         }
     }
 

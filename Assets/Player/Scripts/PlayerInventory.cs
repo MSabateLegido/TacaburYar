@@ -1,19 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerInventory : MonoBehaviour
 {
+    public BoolEvent onOpenInventory;
     [SerializeField] private Inventory inventory;
     [SerializeField] private GameObject inventoryCamera;
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
-        
+        onOpenInventory = new BoolEvent();
     }
 
-    private void OnOpenInventory()
+    public void ChangeEquipmentItem(EquipmentItem newEquipment)
+    {
+        EquipmentItem itemToStore = Player.Instance().Equipment().EquipNewItemAndReturnCurrent(newEquipment);
+        if (itemToStore != null)
+        {
+            inventory.StoreItem(itemToStore);
+        }
+    }
+
+    public void UnequipItem(EquipmentItem unequipedItem)
+    {
+        inventory.StoreItem(unequipedItem);
+        Player.Instance().Stats().UpdatePlayerStats();
+    }
+
+    public void OpenCloseInventory()
     {
         inventoryCamera.SetActive(!inventoryCamera.activeSelf);
+        onOpenInventory.Invoke(inventoryCamera.activeSelf);
     }
+    private void OnOpenInventory()
+    {
+        OpenCloseInventory();
+    }
+    
 }

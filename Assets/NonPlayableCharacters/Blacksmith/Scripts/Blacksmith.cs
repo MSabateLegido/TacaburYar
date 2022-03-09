@@ -50,7 +50,7 @@ public class Blacksmith : NonPlayableCharacter
         {
             interactButtonImage.SetActive(false);
             blacksmithUI.CloseBlacksmithUI();
-            Player.Instance().StopInteracting();
+            //Player.Instance().StopInteracting();
         }
     }
 }

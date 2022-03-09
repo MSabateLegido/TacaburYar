@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     private Camera gameCamera;
 
     [SerializeField] private float timeToRun = 0.2f;
-    [SerializeField] private float timeToStandIdle = 1.5f;
 
     private bool moving = false;
     private bool canMove = true;
@@ -28,12 +27,18 @@ public class PlayerMovement : MonoBehaviour
         playerInput = new Vector2();
         gameCamera = Camera.main;
         animations = GetComponent<PlayerAnimation>();
+        speed = Player.Instance().Stats().GetCurrentStats().GetSpeed();
+        AddListeners();
+    }
+
+    private void AddListeners()
+    {
         Player.Instance().Attack().onRecieveHit.AddListener(OnRecieveHit);
         Player.Instance().Attack().onEndHit.AddListener(OnEndHit);
         Player.Instance().Attack().onPerformAttack.AddListener(OnPerformAttack);
         Player.Instance().Attack().onEndAttack.AddListener(OnEndAttack);
         Player.Instance().Stats().onSpeedChange.AddListener(OnSpeedChange);
-        speed = Player.Instance().Stats().GetCurrentStats().GetSpeed();
+        Player.Instance().Inventory().onOpenInventory.AddListener(OnOpenInventory);
     }
 
     // Update is called once per frame
@@ -107,5 +112,10 @@ public class PlayerMovement : MonoBehaviour
     private void OnSpeedChange(float newSpeed)
     {
         speed = newSpeed;
+    }
+
+    private void OnOpenInventory(bool opened)
+    {
+        SetMovement(!opened);
     }
 }

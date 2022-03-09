@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] private ItemSlot[] itemSlots;
-
-    [SerializeField] private GameObject inventoryUI;
-
+    private ItemSlot[] itemSlots;
 
     [SerializeField] private EquipmentItem[] test;
 
     public void Awake()
     {
+        itemSlots = GetComponentsInChildren<ItemSlot>();
         Test();
     }
 
@@ -140,22 +138,6 @@ public class Inventory : MonoBehaviour
     private bool AlreadyStored(Item itemToStore, ItemSlot slot)
     {
         return !slot.IsEmpty() && itemToStore.GetItemType() == slot.GetStoredItemType();
-    }
-
-    public void CloseInventory()
-    {
-        inventoryUI.SetActive(false);
-    }
-
-    public void OpenInventory()
-    {
-        inventoryUI.SetActive(true);
-    }
-
-    public void OpenOrCloseInventory()
-    {
-        inventoryUI.SetActive(!inventoryUI.activeSelf);
-        
     }
 
 }

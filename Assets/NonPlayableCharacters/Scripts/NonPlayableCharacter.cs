@@ -25,11 +25,11 @@ public class NonPlayableCharacter : MonoBehaviour
         playerInteracting = !playerInteracting;
         if (playerInteracting)
         {
-            Player.Instance().StartInteracting();
+            //Player.Instance().StartInteracting();
         }
         else
         {
-            Player.Instance().StopInteracting();
+            //Player.Instance().StopInteracting();
         }
         
     }
@@ -54,7 +54,7 @@ public class NonPlayableCharacter : MonoBehaviour
                     messagePanel.gameObject.SetActive(false);
                     currentMessageIndex = 0;
                     currentMessage = messages.GetMessage(currentMessageIndex);
-                    Player.Instance().StopInteracting();
+                    //Player.Instance().StopInteracting();
                 }
             }
         }

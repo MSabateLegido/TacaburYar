@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     
     [SerializeField] Camera playerCamera;
     private PlayerEquipmentSet equipment;
-    private Inventory inventory;
+    private PlayerInventory inventory;
     private PlayerMovement playerMovement;
     private PlayerAttack playerAttack;
     private PlayerStats playerStats;
@@ -28,10 +28,7 @@ public class Player : MonoBehaviour
     private PlayerLevel playerLevel;
     private PlayerUI playerUI;
 
-    private bool moving = false;
 
-    private bool lookingInventory = false;
-    private bool interacting = false;
 
 
     private void Awake()
@@ -42,56 +39,9 @@ public class Player : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
         playerLevel = GetComponent<PlayerLevel>();
         playerUI = GetComponent<PlayerUI>();
-        inventory = GetComponent<Inventory>();
+        inventory = GetComponent<PlayerInventory>();
         equipment = GetComponentInChildren<PlayerEquipmentSet>();
         instance = this;
-    }
-
-    private void Start()
-    {
-
-    }
-
-    
-
-    public void ChangeEquipmentItem(EquipmentItem newEquipment)
-    {
-        EquipmentItem itemToStore = equipment.EquipNewItemAndReturnCurrent(newEquipment);
-        if (itemToStore != null)
-        {
-            inventory.StoreItem(itemToStore);
-        }
-    }
-
-    public void UnequipItem(EquipmentItem unequipedItem)
-    {
-        inventory.StoreItem(unequipedItem);
-        playerStats.UpdatePlayerStats();
-    }
-
-    void OnOpenInventory()
-    {
-        if (!interacting)
-        {
-            lookingInventory = !lookingInventory;
-            playerCamera.gameObject.SetActive(lookingInventory);
-            playerMovement.SetMovement(!lookingInventory);
-        }
-    }
-
-    private void OnInteract()
-    {
-        if (!lookingInventory)
-        {
-            Collider[] collisions = Physics.OverlapSphere(transform.position, 1);
-            foreach (Collider col in collisions)
-            {
-                if (col.CompareTag("NPC"))
-                {
-                    col.GetComponent<NonPlayableCharacter>().Interact();
-                }
-            }
-        }
     }
 
     public PlayerMovement Movement()
@@ -129,21 +79,9 @@ public class Player : MonoBehaviour
         return playerUI;
     }
 
-    public Inventory Inventory()
+    public PlayerInventory Inventory()
     {
         return inventory;   
-    }
-
-    public void StartInteracting()
-    {
-        interacting = true;
-        playerMovement.SetMovement(false);
-    }
-
-    public void StopInteracting()
-    {
-        interacting = false;
-        playerMovement.SetMovement(true);
     }
 
     private void OnDrawGizmos()
@@ -151,5 +89,4 @@ public class Player : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, 1);
     }
-
 }
