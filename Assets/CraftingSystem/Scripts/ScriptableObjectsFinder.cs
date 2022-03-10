@@ -6,6 +6,7 @@ using System.Linq;
 
 public class ScriptableObjectsFinder : MonoBehaviour
 {
+#if UNITY_EDITOR
     public static List<T> GetAllInstancesInPath<T>(string path) where T : ScriptableObject
     {
         return AssetDatabase.FindAssets($"t: {typeof(T).Name}", new[] { path }).ToList()
@@ -13,4 +14,5 @@ public class ScriptableObjectsFinder : MonoBehaviour
                     .Select(AssetDatabase.LoadAssetAtPath<T>)
                     .ToList();
     }
+#endif
 }

@@ -5,6 +5,7 @@ using UnityEditor;
 
 public class InventoryEditor : MonoBehaviour
 {
+    #if UNITY_EDITOR
     [MenuItem("Tacabur Yar/Inventory/Active Inventory")]
     static void ActiveInventory()
     {
@@ -43,4 +44,5 @@ public class InventoryEditor : MonoBehaviour
         //PlayerCamera
         GameObject.Find("Player").GetComponentInChildren<Camera>(true).gameObject.SetActive(false);
     }
+    #endif
 }
