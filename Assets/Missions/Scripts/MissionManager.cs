@@ -49,4 +49,9 @@ public class MissionManager : MonoBehaviour
     {
         return currentMission < missions.Length;
     }
+
+    public void SkipCurrentAction()
+    {
+        missions[currentMission].CompleteAction();
+    }
 }

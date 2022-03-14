@@ -30,12 +30,12 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void UseItems(ItemType type, int quantity)
+    private void UseItems(CraftingItemType type, int quantity)
     {
         int quantityLeft = quantity;
         foreach (ItemSlot slot in itemSlots)
         {
-            if (quantityLeft > 0 && !slot.IsEmpty() && slot.GetStoredItemType() == type)
+            if (quantityLeft > 0 && !slot.IsEmpty())
             {
                 quantityLeft = slot.MinusItemQuantity(quantityLeft);
             }
@@ -71,12 +71,12 @@ public class Inventory : MonoBehaviour
             itemsQuantityStored[2] >= itemsNeeded.GetQuantities()[2];
     }
 
-    private int CountItemsOfType(ItemType type)
+    private int CountItemsOfType(CraftingItemType type)
     {
         int quantity = 0;
         foreach (ItemSlot slot in itemSlots)
         {
-            if (!slot.IsEmpty() && slot.GetStoredItemType() == type) 
+            if (!slot.IsEmpty() && slot.GetStoredItemType() == ItemType.Crafting && slot.GetStoredItem()) 
             {
                 quantity += slot.GetQuantity();
             }
@@ -87,7 +87,7 @@ public class Inventory : MonoBehaviour
     public bool StoreItem(Item itemToStore)
     {
         bool stored = false;
-        if (itemToStore.GetItemType() != ItemType.EquipmentItem)
+        if (itemToStore.GetItemType() == ItemType.Crafting)
         {
             stored = StoreItemIfAlreadyInInventory(itemToStore);
         }
@@ -107,7 +107,7 @@ public class Inventory : MonoBehaviour
         do
         {
             slot = itemSlots[i];
-            if (AlreadyStored(itemToStore, slot) && !slot.SlotFull())
+            if (CraftingItemAlreadyStored(itemToStore, slot) && !slot.SlotFull())
             {
                 slot.AddItemToFilledSlot(1);
                 alreadyStored = true;
@@ -135,9 +135,9 @@ public class Inventory : MonoBehaviour
         return stored;
     }
 
-    private bool AlreadyStored(Item itemToStore, ItemSlot slot)
+    private bool CraftingItemAlreadyStored(Item itemToStore, ItemSlot slot)
     {
-        return !slot.IsEmpty() && itemToStore.GetItemType() == slot.GetStoredItemType();
+        return !slot.IsEmpty() && ((CraftingItem)itemToStore).GetCraftingItemType() == ((CraftingItem)slot.GetStoredItem()).GetCraftingItemType();
     }
 
 }

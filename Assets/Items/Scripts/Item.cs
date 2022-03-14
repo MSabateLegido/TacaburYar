@@ -5,17 +5,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public enum ItemType
+public enum ItemType //Edible, crafting, equipment
 {
-    Wood,
-    Leather,
-    Stone,
-    Copper,
-    Iron,
-    DamascusSteel,
-    Obsidian,
-    ElementsStone,
-    EquipmentItem
+    Crafting,
+    Edible,
+    Potion,
+    Equipment
 }
 public class Item : MonoBehaviour
 {

@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Collectable
+public interface IEdible 
 {
-    void CollectItem(Inventory inventory);
+
+    public void EatItem();
+
 }

@@ -69,7 +69,7 @@ public class ItemSlot : MonoBehaviour
 
     public void OnClick()
     {
-        if (storedItem?.GetItemType() == ItemType.EquipmentItem)
+        if (storedItem?.GetItemType() == ItemType.Equipment)
         {
             EquipmentItem itemToEquip = (EquipmentItem)storedItem;
             EmptySlot();
@@ -98,6 +98,11 @@ public class ItemSlot : MonoBehaviour
     public int GetQuantity()
     {
         return quantity;
+    }
+
+    public Item GetStoredItem()
+    {
+        return storedItem;
     }
 
     private void EquipItemAndStoreEquiped()

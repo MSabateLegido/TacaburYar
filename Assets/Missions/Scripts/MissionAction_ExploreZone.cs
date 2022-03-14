@@ -6,11 +6,11 @@ public class MissionAction_ExploreZone : MissionAction
 {
     [SerializeField] private Transform zoneCenter;
     [SerializeField] private float zoneRadius;
-    private ExploreZone_ZoneDelimiter delimiter;
+    private ZoneDelimiter delimiter;
     private void OnEnable()
     {
-        delimiter = GameObject.FindGameObjectWithTag("ZoneMarker").GetComponent<ExploreZone_ZoneDelimiter>();
-        delimiter.MoveDelimiter(zoneCenter.position, zoneRadius);
+        delimiter = GameObject.FindGameObjectWithTag("ZoneMarker").GetComponent<ZoneDelimiter>();
+        delimiter.MoveDelimiter(zoneCenter, zoneRadius);
     }
 
     public override void CompleteAction()

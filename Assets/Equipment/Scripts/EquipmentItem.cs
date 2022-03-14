@@ -22,7 +22,7 @@ public class EquipmentItem : Item
 
     protected void DefaultEquipmentItemSetup()
     {
-        type = ItemType.EquipmentItem;
+        type = ItemType.Equipment;
     }
 
     public EquipmentItemType GetEquipmentType()

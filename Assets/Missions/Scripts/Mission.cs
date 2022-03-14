@@ -10,6 +10,7 @@ public class Mission : MonoBehaviour
 {
     public static UnityEvent onEndMission;
     public static MissionActionEvent onStartNewAction;
+
     [SerializeField] private string missionName;
     private MissionAction[] actionsToCompleteMission;
     private int currentAction;

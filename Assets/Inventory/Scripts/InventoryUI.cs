@@ -13,7 +13,7 @@ public class InventoryUI : MonoBehaviour
     {
         Debug.Log(itemToStore.GetItemType());
         bool stored = false;
-        if (itemToStore.GetItemType() != ItemType.EquipmentItem)
+        if (itemToStore.GetItemType() != ItemType.Equipment)
         {
             stored = StoreItemIfAlreadyInInventory(itemToStore);
         }

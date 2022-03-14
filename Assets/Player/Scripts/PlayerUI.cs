@@ -21,14 +21,14 @@ public class PlayerUI : MonoBehaviour
     {
         hpText.text = currentHp + "/" + maxHp;
         hpBar.DOFillAmount((float)currentHp / (float)maxHp, 0.75f);
-        hpRedBar.DOFillAmount((float)currentHp / (float)maxHp, 1.5f).SetDelay(0.5f);
+        //hpRedBar.DOFillAmount((float)currentHp / (float)maxHp, 1.5f).SetDelay(0.5f);
     }
 
     public void UpdateLifeBarStats(int currentHp, int maxHp)
     {
         hpText.text = currentHp + "/" + maxHp;
         hpBar.fillAmount = currentHp / maxHp;
-        hpRedBar.fillAmount = currentHp / maxHp;
+        //hpRedBar.fillAmount = currentHp / maxHp;
     }
 
     private void OnOpenMap()

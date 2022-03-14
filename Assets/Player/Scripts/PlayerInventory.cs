@@ -35,6 +35,11 @@ public class PlayerInventory : MonoBehaviour
         inventoryCamera.SetActive(!inventoryCamera.activeSelf);
         onOpenInventory.Invoke(inventoryCamera.activeSelf);
     }
+
+    public bool StoreItem(Item itemToStore)
+    {
+        return inventory.StoreItem(itemToStore);
+    }
     private void OnOpenInventory()
     {
         OpenCloseInventory();
