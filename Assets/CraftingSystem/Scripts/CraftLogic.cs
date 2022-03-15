@@ -45,7 +45,7 @@ public class CraftLogic : MonoBehaviour
             if (playerInventory.EnoughSpaceInInventory())
             {
                 playerInventory.UseItemsToCraft(itemsNeeded);
-                playerInventory.StoreItem(itemsNeeded.GetItemToCraftPrefab());
+                playerInventory.OldStoreItem(itemsNeeded.GetItemToCraftPrefab());
                 userInterface.ResetCraftingUserInterface();
             }
             else 

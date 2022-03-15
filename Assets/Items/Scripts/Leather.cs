@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Leather : ItemCollectable
+public class Leather : CraftingItem
 {
 
 

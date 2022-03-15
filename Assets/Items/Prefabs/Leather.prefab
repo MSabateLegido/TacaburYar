@@ -109,5 +109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6737cd4bcb5f2794fae57f6fd54ea2ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  newType: 0
   itemSprite: {fileID: 21300000, guid: 274c9f6182af3854e85843cf51f2761b, type: 3}
+  craftingType: 1

@@ -15,11 +15,32 @@ public class ItemSlot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemQuantity;
 
 
+    public void FillSlot(Item item)
+    {
+        empty = false;
+        storedItem = item;
+        itemImage.sprite = item.GetSprite();
+    }
+
     public void AddItemToFilledSlot(int quantity)
     {
         this.quantity += quantity;
         OpenOrCloseQuantityTextIfNeeded();
     }
+
+    public bool HasStored(Item item)
+    {
+        return storedItem == item;
+    }
+
+    /*
+     * 
+     * ##############
+     * OLD CODE
+     * ##############
+     * 
+     */
+
 
     public void FillEmptySlot(Item item, int quantity)
     {

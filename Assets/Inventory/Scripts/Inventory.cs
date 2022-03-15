@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private List<Item> inventory;
+    //NEW
+    private List<Item> storedItems;
+    private List<CraftingItemType> craftingItemTypesStored;
+    private int slotsAvailable;
     private InventoryUI userInterface;
+    private int maxStack = 20;
+    //
 
     private ItemSlot[] itemSlots;
 
@@ -13,6 +18,10 @@ public class Inventory : MonoBehaviour
 
     public void Awake()
     {
+        storedItems = new List<Item>();
+        craftingItemTypesStored = new List<CraftingItemType>();
+        slotsAvailable = 15;
+        userInterface = GetComponent<InventoryUI>();
         itemSlots = GetComponentsInChildren<ItemSlot>();
         Test();
     }
@@ -21,7 +30,7 @@ public class Inventory : MonoBehaviour
     {
         foreach (EquipmentItem item in test)
         {
-            StoreItem(item);
+            OldStoreItem(item);
         }
     }
 
@@ -79,7 +88,7 @@ public class Inventory : MonoBehaviour
         int quantity = 0;
         foreach (ItemSlot slot in itemSlots)
         {
-            if (!slot.IsEmpty() && slot.GetStoredItemType() == type) 
+            if (!slot.IsEmpty() && slot.GetStoredItemType() == type)
             {
                 quantity += slot.GetQuantity();
             }
@@ -87,7 +96,8 @@ public class Inventory : MonoBehaviour
         return quantity;
     }
 
-    public bool StoreItem(Item itemToStore)
+
+    public bool OldStoreItem(Item itemToStore)
     {
         bool stored = false;
         if (itemToStore.GetItemType() != ItemType.EquipmentItem)
@@ -143,4 +153,55 @@ public class Inventory : MonoBehaviour
         return !slot.IsEmpty() && itemToStore.GetItemType() == slot.GetStoredItemType();
     }
 
+    /*
+     * ################################################### 
+     * ###################################################
+     */
+
+
+
+    public void TryStoreItem(Item item)
+    {
+        if (item.IsStackable())
+        {
+            if (ExistsInInventory(item))
+            {
+                //falta comprobar si el stack esta ple
+                StoreItem(item, true);
+            }
+            else
+            {
+                craftingItemTypesStored.Add(((CraftingItem)item).GetCraftingItemType());
+                StoreItemIfSlotsAvailable(item);
+            }
+        }
+        else
+        {
+            StoreItemIfSlotsAvailable(item);
+        }
+    }
+
+    private void StoreItemIfSlotsAvailable(Item item)
+    {
+        if (slotsAvailable > 0)
+        {
+            StoreItem(item, false);
+        }
+        else
+        {
+            //Tirar item a terra
+        }
+    }
+
+    private bool ExistsInInventory(Item item)
+    {
+        return craftingItemTypesStored.Contains(((CraftingItem)item).GetCraftingItemType());
+    }
+
+    private void StoreItem(Item item, bool stacked)
+    {
+        storedItems.Add(item);
+        userInterface.StoreItem(item, stacked);
+        if (!stacked) slotsAvailable--;
+    }
 }

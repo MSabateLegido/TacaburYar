@@ -20,14 +20,19 @@ public class PlayerInventory : MonoBehaviour
         EquipmentItem itemToStore = Player.Instance().Equipment().EquipNewItemAndReturnCurrent(newEquipment);
         if (itemToStore != null)
         {
-            inventory.StoreItem(itemToStore);
+            inventory.OldStoreItem(itemToStore);
         }
     }
 
     public void UnequipItem(EquipmentItem unequipedItem)
     {
-        inventory.StoreItem(unequipedItem);
+        inventory.OldStoreItem(unequipedItem);
         Player.Instance().Stats().UpdatePlayerStats();
+    }
+
+    public void StoreItem(Item item)
+    {
+        inventory.TryStoreItem(item);
     }
 
     public void OpenCloseInventory()
