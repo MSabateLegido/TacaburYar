@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    private List<Item> inventory;
+    private InventoryUI userInterface;
+
     private ItemSlot[] itemSlots;
 
     [SerializeField] private EquipmentItem[] test;
