@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -6366428043769975807}
   m_Layer: 0
   m_Name: Stone
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,4 +111,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newType: 0
   itemSprite: {fileID: 21300000, guid: 2447062bea72e364ca3c56bce1fc4ab5, type: 3}
-  craftingType: 2

@@ -9,6 +9,22 @@ TagManager:
   - MissionMarker
   - ZoneMarker
   - PointMarker
+  - Wood
+  - Stone
+  - Copper
+  - Iron
+  - DamascusSteel
+  - Obsidian
+  - ElementsStone
+  - Leather
+  - Sword
+  - Armor
+  - Shoulders
+  - Boots
+  - Shield
+  - Helmet
+  - Belt
+  - Gloves
   layers:
   - Default
   - TransparentFX

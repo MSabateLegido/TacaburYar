@@ -20,9 +20,10 @@ public class EquipmentItem : Item
     [SerializeField] protected StatsScriptableObject itemStats;
     [SerializeField] protected int itemIndex;
 
-    protected void DefaultEquipmentItemSetup()
+    private void Awake()
     {
-        type = ItemType.EquipmentItem;
+        Debug.Log("Hola soc equipment item");
+        itemInfo = new ItemInfo(NewItemType.Equipment, gameObject.tag);
     }
 
     public EquipmentItemType GetEquipmentType()

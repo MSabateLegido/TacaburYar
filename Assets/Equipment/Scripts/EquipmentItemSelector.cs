@@ -36,13 +36,14 @@ public class EquipmentItemSelector : MonoBehaviour
         onEquipmentChange.Invoke();
     }
 
+    //Called by the editor onClick on equipment 
     public void UnequipItem()
     {
         if (currentItem != defaultItem)
         {
             currentItem.gameObject.SetActive(false);
             defaultItem.gameObject.SetActive(true);
-            Player.Instance().Inventory().UnequipItem(currentItem);
+            Player.Instance().Equipment().UnequipItem(currentItem);
             //ARREGLAR
             currentItem = defaultItem;
             equipmentSlot.SetSlotToDefault();

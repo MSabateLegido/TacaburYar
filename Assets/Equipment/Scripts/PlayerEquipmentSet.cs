@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class BoolEvent : UnityEvent<bool> { }
+public class EquipmentEvent : UnityEvent<EquipmentItem> { }
 public class PlayerEquipmentSet : MonoBehaviour
 {
     [HideInInspector] public BoolEvent onSwordEquipedChange;
+    [HideInInspector] public EquipmentEvent onEquipmentUnequiped;
 
     //Shield, Sword, Helmet, Shoulders, Armor, Belt, Gloves, Boots
     [SerializeField] private EquipmentItemSelector[] equipmentItems;
@@ -15,6 +17,7 @@ public class PlayerEquipmentSet : MonoBehaviour
 
     private void Awake()
     {
+        onEquipmentUnequiped = new EquipmentEvent();
         onSwordEquipedChange = new BoolEvent();
         equipmentItems = GetComponentsInChildren<EquipmentItemSelector>();
         
@@ -27,12 +30,30 @@ public class PlayerEquipmentSet : MonoBehaviour
             selector.onEquipmentChange.AddListener(CheckEquipedSword);
         }
     }
-    public EquipmentItem EquipNewItemAndReturnCurrent(EquipmentItem newEquipment)
+
+
+    public void ChangeEquipmentItem(EquipmentItem itemToEquip)
     {
-        int equipmentTypeIndex = (int)newEquipment.GetEquipmentType();
+        EquipmentItem itemToStore = EquipNewItemAndReturnCurrent(itemToEquip);
+        if (itemToStore != null)
+        {
+            UnequipItem(itemToStore);
+        }
+    }
+
+    public void UnequipItem(EquipmentItem unequipedItem)
+    {
+        onEquipmentUnequiped.Invoke(unequipedItem);
+        Player.Instance().Stats().UpdatePlayerStats();
+    }
+
+
+    public EquipmentItem EquipNewItemAndReturnCurrent(EquipmentItem itemToEquip)
+    {
+        int equipmentTypeIndex = (int)itemToEquip.GetEquipmentType();
 
         EquipmentItem currentEquipedItem = equipmentItems[equipmentTypeIndex].GetCurrentEquipmentItem();
-        equipmentItems[equipmentTypeIndex].ChangeCurrentItem(newEquipment);
+        equipmentItems[equipmentTypeIndex].ChangeCurrentItem(itemToEquip);
         return currentEquipedItem;
     }
 

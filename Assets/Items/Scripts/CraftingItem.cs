@@ -16,7 +16,11 @@ public enum CraftingItemType
 public class CraftingItem : Item, ICollectable
 {
 
-    [SerializeField] private CraftingItemType craftingType;
+    private void Awake()
+    {
+        itemInfo = new ItemInfo(NewItemType.Crafting, gameObject.tag);
+    }
+
     public void CollectItem()
     {
         Player.Instance().Inventory().StoreItem(this);
@@ -27,11 +31,6 @@ public class CraftingItem : Item, ICollectable
             Destroy(gameObject);
         }*/
         
-    }
-
-    public CraftingItemType GetCraftingItemType()
-    {
-        return craftingType;
     }
 
     private void OnTriggerEnter(Collider other)

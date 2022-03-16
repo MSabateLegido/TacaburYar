@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+[RequireComponent(typeof(MissionsUI))]
 public class MissionManager : MonoBehaviour
 {
     public MissionEvent onStartMission;

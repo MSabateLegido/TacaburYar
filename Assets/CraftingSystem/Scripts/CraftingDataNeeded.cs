@@ -9,10 +9,10 @@ public class CraftingDataNeeded : ScriptableObject
     [SerializeField] Sprite itemToCraftSprite;
     [SerializeField] EquipmentItem itemToCraftPrefab;
 
-    [SerializeField] ItemType[] items;
+    [SerializeField] string[] items;
     [SerializeField] int[] itemsQuantity;
 
-    public ItemType[] GetItemTypes()
+    public string[] GetItemTypes()
     {
         return items;
     }

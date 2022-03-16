@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1447447458926284750}
   m_Layer: 3
   m_Name: Boots2
-  m_TagString: Untagged
+  m_TagString: Boots
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4069c128b6abd0f438577ed995cdbe94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 8
+  newType: 0
   itemSprite: {fileID: 21300000, guid: 134fce60049f3074b9497ec73246e25d, type: 3}
   equipmentItemType: 7
   itemStats: {fileID: 11400000, guid: d2ef8622baae5564d8bf958b92733e68, type: 2}

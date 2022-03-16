@@ -28,13 +28,15 @@ public enum NewItemType
 public class Item : MonoBehaviour
 {
     protected ItemType type;
+    [SerializeField] protected ItemInfo itemInfo;
     [SerializeField] protected NewItemType newType;
     [SerializeField] protected Sprite itemSprite;
 
 
+    
     public NewItemType NewGetItemType()
     {
-        return newType;
+        return itemInfo.GetItemType();
     }
     public ItemType GetItemType()
     {
@@ -56,9 +58,34 @@ public class Item : MonoBehaviour
         return Enum.GetNames(typeof(ItemType))[(int)type];
     }
 
+    public string GetItemName()
+    {
+        return itemInfo.GetName();
+    }
+
 
     public bool IsStackable()
     {
-        return newType == NewItemType.Crafting || newType == NewItemType.Edible;
+        return itemInfo.IsStackable();
+    }
+
+    public bool IsCraftingItem()
+    {
+        return itemInfo.GetItemType() == NewItemType.Crafting;
+    }
+
+    public override bool Equals(object other)
+    {
+        Item otherItem = other as Item;
+        if (GetItemName().Equals(otherItem.GetItemName()))
+        {
+            return true;
+        }
+        return base.Equals(other);
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
     }
 }

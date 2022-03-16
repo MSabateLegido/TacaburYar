@@ -18,7 +18,7 @@ public class MissionsUI : MonoBehaviour
 
     private void Start()
     {
-        GetComponentInParent<MissionManager>().onStartMission.AddListener(SetNewMission);
+        GetComponent<MissionManager>().onStartMission.AddListener(SetNewMission);
         Mission.onStartNewAction.AddListener(AddNewObjective);
         Mission.onEndMission.AddListener(ResetMissionPanel);
     }

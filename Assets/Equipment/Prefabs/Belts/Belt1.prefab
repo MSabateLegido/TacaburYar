@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8254573319675083132}
   m_Layer: 3
   m_Name: Belt1
-  m_TagString: Untagged
+  m_TagString: Belt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,8 +160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6423f347e646ea246be6ef82a1afa834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 8
+  newType: 0
   itemSprite: {fileID: 21300000, guid: d7e4827f04ecd5c47b28f937652ee675, type: 3}
   equipmentItemType: 5
-  itemStats: {fileID: 11400000, guid: 60a3d26596ef4444e977c9a6c3910e60, type: 2}
+  itemStats: {fileID: 0}
   itemIndex: 1

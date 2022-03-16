@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2600490995996168229}
   m_Layer: 3
   m_Name: Shoulders5
-  m_TagString: Untagged
+  m_TagString: Shoulders
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92736c53cbf6fed40b25534429eaaa35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 8
+  newType: 0
   itemSprite: {fileID: 21300000, guid: 2c622df25e865824bb803f012bd59597, type: 3}
   equipmentItemType: 3
   itemStats: {fileID: 11400000, guid: 73f7b924772eef042a69882b111bd510, type: 2}

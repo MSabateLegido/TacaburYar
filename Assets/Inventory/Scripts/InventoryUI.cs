@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -65,7 +66,13 @@ public class InventoryUI : MonoBehaviour
     }
 
 
-
+    public void AddOnEmptySlotListeners(UnityAction action)
+    {
+        foreach (ItemSlot slot in itemSlots)
+        {
+            slot.AddOnEmptySlotListener(action);
+        }
+    }
 
 
 

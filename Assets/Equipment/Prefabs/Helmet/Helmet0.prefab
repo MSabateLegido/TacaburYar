@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8558607396586139956}
   m_Layer: 3
   m_Name: Helmet0
-  m_TagString: Untagged
+  m_TagString: Helmet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae09dbe44ba97e84a947c7f2d05b6448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 8
+  newType: 0
   itemSprite: {fileID: 21300000, guid: 2c331417d0227934ba60f1ef9329d4dd, type: 3}
   equipmentItemType: 2
   itemStats: {fileID: 11400000, guid: 9f248a02d12dd23429328d30ff1078a1, type: 2}

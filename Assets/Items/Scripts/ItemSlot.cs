@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 
 public class ItemSlot : MonoBehaviour
 {
+    public UnityEvent onEmptySlot;
     private Item storedItem;
     private int quantity = 0;
     private bool empty = true;
@@ -30,7 +32,12 @@ public class ItemSlot : MonoBehaviour
 
     public bool HasStored(Item item)
     {
-        return storedItem == item;
+        return storedItem.Equals(item);
+    }
+
+    public void AddOnEmptySlotListener(UnityAction action)
+    {
+        onEmptySlot.AddListener(action);
     }
 
     /*
@@ -86,15 +93,16 @@ public class ItemSlot : MonoBehaviour
         empty = true;
         itemImage.sprite = null;
         OpenOrCloseQuantityTextIfNeeded();
+        onEmptySlot.Invoke();
     }
 
     public void OnClick()
     {
-        if (storedItem?.GetItemType() == ItemType.EquipmentItem)
+        if (storedItem?.NewGetItemType() == NewItemType.Equipment)
         {
             EquipmentItem itemToEquip = (EquipmentItem)storedItem;
             EmptySlot();
-            Player.Instance().Inventory().ChangeEquipmentItem(itemToEquip);
+            Player.Instance().Equipment().ChangeEquipmentItem(itemToEquip);
             //ARREGLAR
         }
     }

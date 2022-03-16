@@ -10,8 +10,6 @@ public class CraftLogic : MonoBehaviour
 
     private CraftLogicUI userInterface;
 
-    [SerializeField] Inventory playerInventory;
-
     private CraftingDataNeeded itemsNeeded;
     private EquipmentItemType craftingItemType;
     private int itemNumber;
@@ -40,12 +38,13 @@ public class CraftLogic : MonoBehaviour
 
     public void CraftItem()
     {
-        if (playerInventory.EnoughItems(itemsNeeded))
+        PlayerInventory inventory = Player.Instance().Inventory();
+        if (inventory.EnoughItems(itemsNeeded))
         {
-            if (playerInventory.EnoughSpaceInInventory())
+            if (inventory.EnoughSpaceInInventory())
             {
-                playerInventory.UseItemsToCraft(itemsNeeded);
-                playerInventory.OldStoreItem(itemsNeeded.GetItemToCraftPrefab());
+                inventory.UseItemsToCraft(itemsNeeded);
+                inventory.StoreItem(itemsNeeded.GetItemToCraftPrefab());
                 userInterface.ResetCraftingUserInterface();
             }
             else 
