@@ -26,8 +26,6 @@ public class PlayerStats : MonoBehaviour
         playerEquipment = GetComponentInChildren<PlayerEquipmentSet>();
         playerLevel = GetComponent<PlayerLevel>();
         playerUI = GetComponent<PlayerUI>();
-
-        
     }
 
     private void Start()
@@ -38,6 +36,7 @@ public class PlayerStats : MonoBehaviour
         {
             selector.onEquipmentChange.AddListener(UpdatePlayerStats);
         }
+        Player.Instance().Hunger().onStarve.AddListener(OnStarve);
         UpdatePlayerStats();
     }
 
@@ -67,6 +66,11 @@ public class PlayerStats : MonoBehaviour
     {
         currentHp -= damage;
         playerUI.UpdateLifeBarByHit(currentHp, Player.Instance().Stats().GetCurrentStats().GetHP());
+    }
+
+    private void OnStarve()
+    {
+        RecieveDamage(5);
     }
 
     public Stats GetCurrentStats()

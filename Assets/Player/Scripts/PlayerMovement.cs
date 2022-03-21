@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         Player.Instance().Attack().onPerformAttack.AddListener(OnPerformAttack);
         Player.Instance().Attack().onEndAttack.AddListener(OnEndAttack);
         Player.Instance().Stats().onSpeedChange.AddListener(OnSpeedChange);
-        Player.Instance().Inventory().onOpenInventory.AddListener(OnOpenInventory);
+        Player.Instance().Inventory().onOpenInventory.AddListener(OnPlayerOpenInventory);
     }
 
     // Update is called once per frame
@@ -114,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
         speed = newSpeed;
     }
 
-    private void OnOpenInventory(bool opened)
+    private void OnPlayerOpenInventory(bool opened)
     {
         SetMovement(!opened);
     }

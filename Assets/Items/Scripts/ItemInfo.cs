@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[System.Serializable]
 public class ItemInfo
 {
-    [SerializeField] private NewItemType itemType;
+    private ItemType itemType;
     private string itemName;
     // Start is called before the first frame update
-    public ItemInfo(NewItemType type, string name)
+    public ItemInfo() {}
+
+    public ItemInfo(ItemType type, string name)
     {
         itemType = type;
         itemName = name;
     }
 
-    public NewItemType GetItemType()
+    public ItemType GetItemType()
     {
         return itemType;
     }
@@ -25,6 +26,6 @@ public class ItemInfo
 
     public bool IsStackable()
     {
-        return itemType == NewItemType.Crafting || itemType == NewItemType.Edible;
+        return itemType == ItemType.Crafting || itemType == ItemType.Edible;
     }
 }

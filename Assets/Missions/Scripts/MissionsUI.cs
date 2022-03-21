@@ -20,12 +20,14 @@ public class MissionsUI : MonoBehaviour
     {
         GetComponent<MissionManager>().onStartMission.AddListener(SetNewMission);
         Mission.onStartNewAction.AddListener(AddNewObjective);
-        Mission.onEndMission.AddListener(ResetMissionPanel);
+        //Mission.onEndMission.AddListener(ResetMissionPanel);
     }
 
-    private void SetNewMission(Mission newMission)
+    public void SetNewMission(Mission newMission)
     {
+        Debug.Log("Set new mission " + Time.time);
         SetMissionTitle(newMission.GetMissionName());
+        ResetMissionPanel();
         if (!missionsPanel.activeSelf)
         {
             notificationIcon.SetActive(true);
@@ -34,6 +36,7 @@ public class MissionsUI : MonoBehaviour
 
     private void ResetMissionPanel()
     {
+        Debug.Log("resetMissionPanel " + Time.time);
         foreach (TextMeshProUGUI objective in missionObjectives.GetComponentsInChildren<TextMeshProUGUI>())
         {
             Debug.Log(objective.name);
@@ -51,6 +54,7 @@ public class MissionsUI : MonoBehaviour
     
     public void AddNewObjective(MissionAction action)
     {
+        Debug.Log("addnewObjective " + Time.time);
         if (currentActionText != null) { currentActionText.fontStyle = FontStyles.Strikethrough; }
         currentActionText = Instantiate(objectiveTextPrefab, missionObjectives.transform);
         currentActionText.text = "- " + action.GetObjective();

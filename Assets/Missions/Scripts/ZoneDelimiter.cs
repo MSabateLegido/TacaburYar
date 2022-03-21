@@ -32,6 +32,6 @@ public class ZoneDelimiter : MonoBehaviour
     public void HideDelimiter()
     {
         hided = true;
-        transform.position = Vector3.zero;
+        transform.position = Vector3.down * 6;
     }
 }

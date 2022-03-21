@@ -8,29 +8,29 @@ public class MissionManager : MonoBehaviour
     public MissionEvent onStartMission;
     private Mission[] missions;
     private int currentMission;
-    private MissionsUI missionsUI;
 
     private void Awake()
     {
         missions = GetComponentsInChildren<Mission>(true);
-        missionsUI = GetComponentInChildren<MissionsUI>();
         Mission.onEndMission = new UnityEvent();
         Mission.onStartNewAction = new MissionActionEvent();
         onStartMission = new MissionEvent();
+        
     }
 
     private void Start()
     {
         Mission.onEndMission.AddListener(EndCurrentMission);
-        StartNextMission();
+        Invoke(nameof(StartNextMission), 1f);
     }
 
     private void StartNextMission()
     {
         if (MissionExist())
         {
-            missions[currentMission].gameObject.SetActive(true);
+            Debug.Log("Start next missions " + Time.time);
             onStartMission.Invoke(missions[currentMission]);
+            missions[currentMission].gameObject.SetActive(true);
         }
         else
         {
@@ -40,6 +40,7 @@ public class MissionManager : MonoBehaviour
 
     private void EndCurrentMission()
     {
+        Debug.Log("endCurrentMission " + Time.time);
         missions[currentMission].gameObject.SetActive(false);
         currentMission++;
         StartNextMission();

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8808215677723525883}
   - component: {fileID: 5723161978281210666}
-  - component: {fileID: 3705120355324017243}
+  - component: {fileID: -6115902922880713136}
   m_Layer: 3
   m_Name: Gloves2
   m_TagString: Gloves
@@ -148,7 +148,7 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000011920929, y: -0.08513583, z: 1.0039554}
     m_Extent: {x: 1.1073751, y: 0.15971638, z: 0.13772482}
   m_DirtyAABB: 0
---- !u!114 &3705120355324017243
+--- !u!114 &-6115902922880713136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,11 +157,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6476664712163133160}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81e2a61e71f068d46a19fe32cc9ca8c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bc15823db45f4b45853a837e3c45df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newType: 0
   itemSprite: {fileID: 21300000, guid: 929b6ec776e597848afa138f7f1fd7db, type: 3}
-  equipmentItemType: 6
   itemStats: {fileID: 11400000, guid: d8c2ff5d12880a340a9fbce8748d242b, type: 2}
   itemIndex: 2

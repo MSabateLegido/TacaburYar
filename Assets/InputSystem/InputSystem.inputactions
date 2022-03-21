@@ -14,14 +14,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "OpenInventory",
-                    "type": "Button",
-                    "id": "bc8dc86c-1a4b-4965-a8b7-d73fbb481a7e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "8d1c40db-d282-4456-9440-030d3f0db2ad",
@@ -36,28 +28,9 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "OpenMap",
-                    "type": "Button",
-                    "id": "017e93e4-2f1e-49a6-9bae-d0679e7aeabc",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "c437e1f1-7a2b-4fe0-a86a-24013f660645",
-                    "path": "<Keyboard>/i",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "OpenInventory",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "2D Vector",
                     "id": "876db8f0-c727-4c5c-bf2d-6f2b8b51fe1a",
@@ -134,10 +107,45 @@
                     "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "a33cec7f-f395-41d7-997d-7906e8710d2f",
+            "actions": [
+                {
+                    "name": "OpenInventory",
+                    "type": "Button",
+                    "id": "af60d072-a6c8-48fc-ae7e-f1fcc53c103b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "OpenMap",
+                    "type": "Button",
+                    "id": "67771d2f-3cf0-428d-a116-16eeba148bfa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5770e5d8-8f05-4742-870e-cba486097ee6",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "730422cb-351d-4fdd-9969-c8f9155473ee",
+                    "id": "fa1c7b4e-2d53-4ba5-b8be-688562e8b576",
                     "path": "<Keyboard>/m",
                     "interactions": "",
                     "processors": "",

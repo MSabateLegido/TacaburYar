@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3629510599247987531}
   - component: {fileID: 7085405910735016831}
-  - component: {fileID: 9154667903546272660}
+  - component: {fileID: -5566658238324634447}
   m_Layer: 3
   m_Name: Boots3
   m_TagString: Boots
@@ -148,7 +148,7 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0000035911798, y: -0.08972539, z: 0.15610592}
     m_Extent: {x: 0.3147229, y: 0.21273603, z: 0.17556511}
   m_DirtyAABB: 0
---- !u!114 &9154667903546272660
+--- !u!114 &-5566658238324634447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,11 +157,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1339528339787030705}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4069c128b6abd0f438577ed995cdbe94, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bc15823db45f4b45853a837e3c45df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newType: 0
   itemSprite: {fileID: 21300000, guid: 0cd115235e30ba74faf184f30685a6c0, type: 3}
-  equipmentItemType: 7
   itemStats: {fileID: 11400000, guid: 60340e808b3c7984081d01f5934a8655, type: 2}
   itemIndex: 3

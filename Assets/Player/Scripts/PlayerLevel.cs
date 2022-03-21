@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class PlayerLevel : MonoBehaviour
 {
-    public UnityEvent onLevelUp;
+    [HideInInspector] public UnityEvent onLevelUp;
 
     private int playerLevel;
     private int currentExperience;

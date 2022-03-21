@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     private PlayerAnimation playerAnimations;
     private PlayerLevel playerLevel;
     private PlayerUI playerUI;
+    private PlayerHunger playerHunger;
 
 
 
@@ -41,6 +42,7 @@ public class Player : MonoBehaviour
         playerUI = GetComponent<PlayerUI>();
         inventory = GetComponent<PlayerInventory>();
         equipment = GetComponentInChildren<PlayerEquipmentSet>();
+        playerHunger = GetComponent<PlayerHunger>();
         instance = this;
     }
 
@@ -82,6 +84,11 @@ public class Player : MonoBehaviour
     public PlayerInventory Inventory()
     {
         return inventory;   
+    }
+
+    public PlayerHunger Hunger()
+    {
+        return playerHunger;
     }
 
     private void OnDrawGizmos()

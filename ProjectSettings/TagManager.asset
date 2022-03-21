@@ -25,6 +25,11 @@ TagManager:
   - Helmet
   - Belt
   - Gloves
+  - Meat
+  - Map
+  - Inventory
+  - Missions
+  - MainMenu
   layers:
   - Default
   - TransparentFX

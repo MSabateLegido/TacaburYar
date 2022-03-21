@@ -9,7 +9,7 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private Inventory inventory;
     [SerializeField] private GameObject inventoryCamera;
 
-    [SerializeField] EquipmentItem itemToStore;
+    [SerializeField] EquipmentItem[] itemToStore;
 
     private void Awake()
     {
@@ -19,33 +19,24 @@ public class PlayerInventory : MonoBehaviour
     private void Start()
     {
         Player.Instance().Equipment().onEquipmentUnequiped.AddListener(StoreItem);
-        StoreItem(itemToStore);
+        foreach (Item itemToStore in itemToStore)
+        {
+            StoreItem(itemToStore);
+        }
+        
     }
 
     public bool EnoughItems(CraftingDataNeeded itemsNeeded)
     {
         int[] itemsQuantityStored = new int[]
         {
-            CountItemsOfType(itemsNeeded.GetItemTypes()[0]),
-            CountItemsOfType(itemsNeeded.GetItemTypes()[1]),
-            CountItemsOfType(itemsNeeded.GetItemTypes()[2])
+            inventory.CountItemsOfType(itemsNeeded.GetItemTypes()[0]),
+            inventory.CountItemsOfType(itemsNeeded.GetItemTypes()[1]),
+            inventory.CountItemsOfType(itemsNeeded.GetItemTypes()[2])
         };
         return itemsQuantityStored[0] >= itemsNeeded.GetQuantities()[0] &&
             itemsQuantityStored[1] >= itemsNeeded.GetQuantities()[1] &&
             itemsQuantityStored[2] >= itemsNeeded.GetQuantities()[2];
-    }
-
-    private int CountItemsOfType(string type)
-    {
-        int quantity = 0;
-        foreach (Item item in inventory.GetStoredItems())
-        {
-            if (item.GetItemName().Equals(type))
-            {
-                quantity++;
-            }
-        }
-        return quantity;
     }
 
 

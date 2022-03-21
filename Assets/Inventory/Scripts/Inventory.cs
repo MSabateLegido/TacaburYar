@@ -11,7 +11,6 @@ public class Inventory : MonoBehaviour
     private int maxStack = 20;
     //
 
-    private ItemSlot[] itemSlots;
 
 
     public void Awake()
@@ -19,12 +18,13 @@ public class Inventory : MonoBehaviour
         storedItems = new List<Item>();
         slotsAvailable = 15;
         userInterface = GetComponent<InventoryUI>();
-        itemSlots = GetComponentsInChildren<ItemSlot>();   
     }
 
     private void Start()
     {
         userInterface.AddOnEmptySlotListeners(OnEmptySlot);
+        EdibleItem.LazyInitializeEatEvent();
+        EdibleItem.onEatEdibleItem.AddListener(OnEatEdibleItem);
     }
 
     public void TryStoreItem(Item item)
@@ -33,8 +33,14 @@ public class Inventory : MonoBehaviour
         {
             if (ExistsInInventory(item))
             {
-                //falta comprobar si el stack esta ple
-                StoreItem(item, true);
+                if (CountItemsOfType(item.GetItemName()) < maxStack)
+                {
+                    StoreItem(item, true);
+                }
+                else
+                {
+                    StoreItemIfSlotsAvailable(item);
+                }
             }
             else
             {
@@ -82,6 +88,19 @@ public class Inventory : MonoBehaviour
         if (!stacked) slotsAvailable--;
     }
 
+    public int CountItemsOfType(string type)
+    {
+        int quantity = 0;
+        foreach (Item item in storedItems)
+        {
+            if (item.GetItemName().Equals(type))
+            {
+                quantity++;
+            }
+        }
+        return quantity;
+    }
+
     public bool EnoughSpaceInInventory()
     {
         return slotsAvailable > 0;
@@ -90,6 +109,13 @@ public class Inventory : MonoBehaviour
     private void OnEmptySlot()
     {
         slotsAvailable++;
+    }
+
+    private void OnEatEdibleItem(EdibleItem itemEated)
+    {
+        Debug.Log(storedItems.Count);
+        storedItems.Remove(itemEated);
+        Debug.Log(storedItems.Count);
     }
 
     public List<Item> GetStoredItems()

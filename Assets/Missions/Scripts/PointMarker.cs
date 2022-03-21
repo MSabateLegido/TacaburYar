@@ -23,6 +23,6 @@ public class PointMarker : MonoBehaviour
     public void HideMarker()
     {
         hided = true;
-        transform.position = Vector3.zero;
+        transform.position = Vector3.down * 6;
     }
 }

@@ -17,7 +17,6 @@ public class EquipmentItemSelector : MonoBehaviour
 
     private void Awake()
     {
-
         SetCurrentItem();
     }
 

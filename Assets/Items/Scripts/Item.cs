@@ -2,60 +2,35 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 
 public enum ItemType
-{
-    Wood,
-    Leather,
-    Stone,
-    Copper,
-    Iron,
-    DamascusSteel,
-    Obsidian,
-    ElementsStone,
-    EquipmentItem
-}
-
-public enum NewItemType
 {
     Crafting,
     Potion, 
     Edible,
     Equipment
 }
+
+public class ItemEvent : UnityEvent<Item> { }
 public class Item : MonoBehaviour
 {
-    protected ItemType type;
-    [SerializeField] protected ItemInfo itemInfo;
-    [SerializeField] protected NewItemType newType;
+    public static ItemEvent onAcquireItem;
+    protected ItemInfo itemInfo;
     [SerializeField] protected Sprite itemSprite;
 
-
     
-    public NewItemType NewGetItemType()
+    public ItemType GetItemType()
     {
         return itemInfo.GetItemType();
     }
-    public ItemType GetItemType()
-    {
-        return type;
-    }
+
 
     public Sprite GetSprite()
     {
         return itemSprite;
-    }
-
-    public static int GetItemTypesCount()
-    {
-        return Enum.GetNames(typeof(ItemType)).Length;
-    }
-
-    public static string GetItemTypeString(ItemType type)
-    {
-        return Enum.GetNames(typeof(ItemType))[(int)type];
     }
 
     public string GetItemName()
@@ -66,12 +41,13 @@ public class Item : MonoBehaviour
 
     public bool IsStackable()
     {
+        LazyInitializeItemInfo();
         return itemInfo.IsStackable();
     }
 
     public bool IsCraftingItem()
     {
-        return itemInfo.GetItemType() == NewItemType.Crafting;
+        return itemInfo.GetItemType() == ItemType.Crafting;
     }
 
     public override bool Equals(object other)
@@ -87,5 +63,26 @@ public class Item : MonoBehaviour
     public override int GetHashCode()
     {
         return base.GetHashCode();
+    }
+
+    private void LazyInitializeItemInfo()
+    {
+        if (itemInfo == null)
+        {
+            InitializeItemInfo();
+        }
+    }
+
+    protected virtual void InitializeItemInfo()
+    {
+        itemInfo = new ItemInfo();
+    }
+
+    protected void LazyInitializeOnAcquireItem()
+    {
+        if (onAcquireItem == null)
+        {
+            onAcquireItem = new ItemEvent();
+        }
     }
 }

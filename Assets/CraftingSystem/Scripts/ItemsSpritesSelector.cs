@@ -16,11 +16,6 @@ public class ItemsSpritesSelector : MonoBehaviour
             namesSprites.Add(itemsNames[i], itemsSprites[i]);
         }
     }
-    public Sprite[] GetItemsNeededSprites(ItemType[] itemsNeeded)
-    {
-        return new[] { itemsSprites[(int)itemsNeeded[0]], itemsSprites[(int)itemsNeeded[1]], itemsSprites[(int)itemsNeeded[2]] };
-    }
-
     public Sprite GetItemSprite(string itemNeeded)
     {
         return namesSprites[itemNeeded];

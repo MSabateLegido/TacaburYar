@@ -11,7 +11,6 @@ public class ItemSlot : MonoBehaviour
     private Item storedItem;
     private int quantity = 0;
     private bool empty = true;
-    private int maxItemsStacked = 8;
 
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI itemQuantity;
@@ -21,13 +20,14 @@ public class ItemSlot : MonoBehaviour
     {
         empty = false;
         storedItem = item;
+        quantity = 1;
         itemImage.sprite = item.GetSprite();
     }
 
     public void AddItemToFilledSlot(int quantity)
     {
         this.quantity += quantity;
-        OpenOrCloseQuantityTextIfNeeded();
+        UpdateQuantityText();
     }
 
     public bool HasStored(Item item)
@@ -40,25 +40,7 @@ public class ItemSlot : MonoBehaviour
         onEmptySlot.AddListener(action);
     }
 
-    /*
-     * 
-     * ##############
-     * OLD CODE
-     * ##############
-     * 
-     */
-
-
-    public void FillEmptySlot(Item item, int quantity)
-    {
-        storedItem = item;
-        this.quantity = quantity;
-        empty = false;
-        itemImage.sprite = item.GetSprite();
-        OpenOrCloseQuantityTextIfNeeded();
-    }
-
-    private void OpenOrCloseQuantityTextIfNeeded()
+    private void UpdateQuantityText()
     {
         if (this.quantity > 1)
         {
@@ -76,61 +58,31 @@ public class ItemSlot : MonoBehaviour
         return empty;
     }
 
-    public ItemType GetStoredItemType()
-    {
-        return storedItem.GetItemType();
-    }
-
-    public bool SlotFull()
-    {
-        return quantity >= maxItemsStacked;
-    }
-
     public void EmptySlot()
     {
         storedItem = null;
         quantity = 0;
         empty = true;
         itemImage.sprite = null;
-        OpenOrCloseQuantityTextIfNeeded();
+        UpdateQuantityText();
         onEmptySlot.Invoke();
     }
 
     public void OnClick()
     {
-        if (storedItem?.NewGetItemType() == NewItemType.Equipment)
+        if (storedItem?.GetItemType() == ItemType.Equipment)
         {
             EquipmentItem itemToEquip = (EquipmentItem)storedItem;
             EmptySlot();
             Player.Instance().Equipment().ChangeEquipmentItem(itemToEquip);
             //ARREGLAR
         }
-    }
-
-    public int MinusItemQuantity(int quantityToMinus)
-    {
-        if (quantityToMinus >= this.quantity)
+        else if (storedItem?.GetItemType() == ItemType.Edible)
         {
-            quantityToMinus -= this.quantity;
-            EmptySlot();
+            ((EdibleItem)storedItem).EatItem();
+            quantity--;
+            if (quantity == 0) EmptySlot();
+            else UpdateQuantityText();
         }
-        else
-        {
-            this.quantity -= quantityToMinus;
-            quantityToMinus = 0;
-            OpenOrCloseQuantityTextIfNeeded();
-        }
-        Debug.Log(quantityToMinus);
-        return quantityToMinus;
-    }
-
-    public int GetQuantity()
-    {
-        return quantity;
-    }
-
-    private void EquipItemAndStoreEquiped()
-    {
-
     }
 }

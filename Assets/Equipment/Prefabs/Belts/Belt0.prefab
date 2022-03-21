@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3651722656932351665}
   - component: {fileID: 3651722656927309703}
-  - component: {fileID: 6784201167940808242}
+  - component: {fileID: 7895913625695755707}
   m_Layer: 3
   m_Name: Belt0
   m_TagString: Belt
@@ -148,7 +148,7 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.003041923, y: -0.030756682, z: 0.6124688}
     m_Extent: {x: 0.3069979, y: 0.3260029, z: 0.259499}
   m_DirtyAABB: 0
---- !u!114 &6784201167940808242
+--- !u!114 &7895913625695755707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,11 +157,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3651722656932516497}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6423f347e646ea246be6ef82a1afa834, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bc15823db45f4b45853a837e3c45df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newType: 0
   itemSprite: {fileID: 21300000, guid: aaa4d8458f6558c4082e04ce7556eb97, type: 3}
-  equipmentItemType: 5
-  itemStats: {fileID: 0}
+  itemStats: {fileID: 11400000, guid: 772261494882a0d4b8f4a1f852e6bc3d, type: 2}
   itemIndex: 0

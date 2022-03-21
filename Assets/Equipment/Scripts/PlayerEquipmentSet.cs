@@ -12,14 +12,18 @@ public class PlayerEquipmentSet : MonoBehaviour
 
     //Shield, Sword, Helmet, Shoulders, Armor, Belt, Gloves, Boots
     [SerializeField] private EquipmentItemSelector[] equipmentItems;
-
-    [SerializeField] private EquipmentSetUI equipementUI;
+    private Dictionary<string, EquipmentItemSelector> equipmentSet;
 
     private void Awake()
     {
+        equipmentSet = new Dictionary<string, EquipmentItemSelector>();
+        foreach (EquipmentItemSelector selector in equipmentItems)
+        {
+            equipmentSet.Add(selector.tag, selector);
+        }
         onEquipmentUnequiped = new EquipmentEvent();
         onSwordEquipedChange = new BoolEvent();
-        equipmentItems = GetComponentsInChildren<EquipmentItemSelector>();
+        
         
     }
 
@@ -50,10 +54,8 @@ public class PlayerEquipmentSet : MonoBehaviour
 
     public EquipmentItem EquipNewItemAndReturnCurrent(EquipmentItem itemToEquip)
     {
-        int equipmentTypeIndex = (int)itemToEquip.GetEquipmentType();
-
-        EquipmentItem currentEquipedItem = equipmentItems[equipmentTypeIndex].GetCurrentEquipmentItem();
-        equipmentItems[equipmentTypeIndex].ChangeCurrentItem(itemToEquip);
+        EquipmentItem currentEquipedItem = equipmentSet[itemToEquip.GetItemName()].GetCurrentEquipmentItem();
+        equipmentSet[itemToEquip.GetItemName()].ChangeCurrentItem(itemToEquip);
         return currentEquipedItem;
     }
 
@@ -71,19 +73,7 @@ public class PlayerEquipmentSet : MonoBehaviour
         }
         return auxStats;
     }
-
-    public void OpenOrCloseEquipmentUI(bool open)
-    {
-        if (open)
-        {
-            equipementUI.OpenEquipmentUI();
-        } 
-        else
-        {
-            equipementUI.CloseEquipmentUI();
-        }
-        
-    }
+    
 
     public EquipmentItemSelector[] GetEquipmentSelectors()
     {

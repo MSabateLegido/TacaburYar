@@ -31,7 +31,7 @@ public class PlayerUI : MonoBehaviour
         hpRedBar.fillAmount = currentHp / maxHp;
     }
 
-    private void OnOpenMap()
+    public void OnOpenMap()
     {
         mapCamera.gameObject.SetActive(!mapCamera.gameObject.activeSelf);
     }

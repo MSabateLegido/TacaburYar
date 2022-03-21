@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1943912349940368023}
   - component: {fileID: 1943912349937468201}
   - component: {fileID: 1943912349938598249}
-  - component: {fileID: 8534880497657927608}
+  - component: {fileID: 868525186310066671}
   m_Layer: 3
   m_Name: Sword1
   m_TagString: Sword
@@ -83,7 +83,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8534880497657927608
+--- !u!114 &868525186310066671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,11 +92,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1943912349940801143}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34be523631a200745ab60beab813d707, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bc15823db45f4b45853a837e3c45df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newType: 0
   itemSprite: {fileID: 21300000, guid: 472ead56a72056147a97c2b362ef8006, type: 3}
-  equipmentItemType: 1
   itemStats: {fileID: 11400000, guid: 628078f84f940614ab83c67c7eb5349f, type: 2}
   itemIndex: 1

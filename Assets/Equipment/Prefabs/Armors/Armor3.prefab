@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6108941303471350394}
   - component: {fileID: 3274761513497845580}
-  - component: {fileID: 2717313220055725083}
+  - component: {fileID: -8708835724817169718}
   m_Layer: 3
   m_Name: Armor3
   m_TagString: Armor
@@ -148,7 +148,7 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.000000059604645, y: -0.064035565, z: 0.7265794}
     m_Extent: {x: 0.7953746, y: 0.3268255, z: 0.4733032}
   m_DirtyAABB: 0
---- !u!114 &2717313220055725083
+--- !u!114 &-8708835724817169718
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,13 +157,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7824709827897075715}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0bdd34f7096f94408df38418bfd966a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bc15823db45f4b45853a837e3c45df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemInfo:
-    itemType: 3
-  newType: 3
   itemSprite: {fileID: 21300000, guid: a91a4a576e99f5245ba1f4c6488a7597, type: 3}
-  equipmentItemType: 4
   itemStats: {fileID: 11400000, guid: abd8ae1bfc70df541bbee18ab3bd3299, type: 2}
   itemIndex: 3

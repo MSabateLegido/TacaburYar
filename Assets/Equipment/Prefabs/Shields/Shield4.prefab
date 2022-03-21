@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5024357167436339704}
   - component: {fileID: 5024357167433472008}
   - component: {fileID: 5024357167434439368}
-  - component: {fileID: 2968381594600801505}
+  - component: {fileID: 17313216084211980}
   m_Layer: 3
   m_Name: Shield4
   m_TagString: Shield
@@ -83,7 +83,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2968381594600801505
+--- !u!114 &17313216084211980
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,11 +92,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5024357167436432856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a93d091bc0428df48860870991bf97ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bc15823db45f4b45853a837e3c45df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newType: 0
   itemSprite: {fileID: 21300000, guid: 20a0611e021eb73408b449c712626ce7, type: 3}
-  equipmentItemType: 0
   itemStats: {fileID: 11400000, guid: d0df30a6e039aa544976d9dfd0c18e5b, type: 2}
   itemIndex: 4

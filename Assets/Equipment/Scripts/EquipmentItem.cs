@@ -16,19 +16,17 @@ public enum EquipmentItemType
 }
 public class EquipmentItem : Item
 {
-    [SerializeField] protected EquipmentItemType equipmentItemType;
     [SerializeField] protected StatsScriptableObject itemStats;
     [SerializeField] protected int itemIndex;
 
     private void Awake()
     {
-        Debug.Log("Hola soc equipment item");
-        itemInfo = new ItemInfo(NewItemType.Equipment, gameObject.tag);
+        InitializeItemInfo();
     }
 
-    public EquipmentItemType GetEquipmentType()
+    protected override void InitializeItemInfo()
     {
-        return equipmentItemType;
+        itemInfo = new ItemInfo(ItemType.Equipment, gameObject.tag + itemIndex);
     }
 
     public int GetItemIndex()

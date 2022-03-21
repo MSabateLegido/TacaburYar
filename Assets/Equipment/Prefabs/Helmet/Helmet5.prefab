@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7339515112258956213}
   - component: {fileID: 7413707022031853838}
-  - component: {fileID: 6991443988064150476}
+  - component: {fileID: 4249690988037726693}
   m_Layer: 3
   m_Name: Helmet5
   m_TagString: Helmet
@@ -148,7 +148,7 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: -0.05813706, z: 1.5183079}
     m_Extent: {x: 0.3270587, y: 0.3389643, z: 0.28484225}
   m_DirtyAABB: 0
---- !u!114 &6991443988064150476
+--- !u!114 &4249690988037726693
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,11 +157,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3258267546719525279}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae09dbe44ba97e84a947c7f2d05b6448, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bc15823db45f4b45853a837e3c45df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newType: 0
   itemSprite: {fileID: 21300000, guid: 491a72558df188f449414d2857e3e3b8, type: 3}
-  equipmentItemType: 2
   itemStats: {fileID: 11400000, guid: e21dc102908d7234b8ee6f1ec91f5908, type: 2}
   itemIndex: 5

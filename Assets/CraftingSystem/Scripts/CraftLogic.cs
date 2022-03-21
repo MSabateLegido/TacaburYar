@@ -45,6 +45,7 @@ public class CraftLogic : MonoBehaviour
             {
                 inventory.UseItemsToCraft(itemsNeeded);
                 inventory.StoreItem(itemsNeeded.GetItemToCraftPrefab());
+                Item.onAcquireItem.Invoke(itemsNeeded.GetItemToCraftPrefab());
                 userInterface.ResetCraftingUserInterface();
             }
             else 
