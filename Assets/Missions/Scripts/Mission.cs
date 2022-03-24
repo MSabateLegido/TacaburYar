@@ -8,8 +8,8 @@ public class MissionEvent : UnityEvent<Mission> { }
 public class MissionActionEvent : UnityEvent<MissionAction> { }
 public class Mission : MonoBehaviour
 {
-    public static UnityEvent onEndMission;
-    public static MissionActionEvent onStartNewAction;
+    public static UnityEvent onEndMission = new UnityEvent();
+    public static MissionActionEvent onStartNewAction = new MissionActionEvent();
     [SerializeField] private string missionName;
     private MissionAction[] actionsToCompleteMission;
     private int currentAction;

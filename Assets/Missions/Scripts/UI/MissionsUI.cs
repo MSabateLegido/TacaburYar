@@ -14,13 +14,15 @@ public class MissionsUI : MonoBehaviour
     private int objectivesNumber = 0;
 
     [SerializeField] private TextMeshProUGUI objectiveTextPrefab;
-    [SerializeField] private GameObject notificationIcon;
 
+    private void Awake()
+    {
+        MissionManager.onStartMission.AddListener(SetNewMission);
+        Mission.onStartNewAction.AddListener(AddNewObjective);
+    }
     private void Start()
     {
-        GetComponent<MissionManager>().onStartMission.AddListener(SetNewMission);
-        Mission.onStartNewAction.AddListener(AddNewObjective);
-        //Mission.onEndMission.AddListener(ResetMissionPanel);
+       
     }
 
     public void SetNewMission(Mission newMission)
@@ -28,10 +30,6 @@ public class MissionsUI : MonoBehaviour
         Debug.Log("Set new mission " + Time.time);
         SetMissionTitle(newMission.GetMissionName());
         ResetMissionPanel();
-        if (!missionsPanel.activeSelf)
-        {
-            notificationIcon.SetActive(true);
-        }
     }
 
     private void ResetMissionPanel()
@@ -60,19 +58,12 @@ public class MissionsUI : MonoBehaviour
         currentActionText.text = "- " + action.GetObjective();
         currentActionText.GetComponent<RectTransform>().offsetMax = new Vector2(0,-objectivesNumber*100);
         objectivesNumber++;
-        if (!missionsPanel.activeSelf)
-        {
-            notificationIcon.SetActive(true);
-        }
+
     }
 
     public void OpenCloseMissionsPanel()
     {
         missionsPanel.SetActive(!missionsPanel.activeSelf);
-        if (notificationIcon.activeSelf)
-        {
-            notificationIcon.SetActive(false);
-        }
     }
 
 }

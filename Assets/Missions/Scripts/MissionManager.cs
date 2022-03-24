@@ -2,20 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-[RequireComponent(typeof(MissionsUI))]
+
+
 public class MissionManager : MonoBehaviour
 {
-    public MissionEvent onStartMission;
+    public static MissionEvent onStartMission = new MissionEvent();
     private Mission[] missions;
     private int currentMission;
 
     private void Awake()
     {
-        missions = GetComponentsInChildren<Mission>(true);
-        Mission.onEndMission = new UnityEvent();
-        Mission.onStartNewAction = new MissionActionEvent();
-        onStartMission = new MissionEvent();
         
+        //Mission.onEndMission = new UnityEvent();
+        //Mission.onStartNewAction = new MissionActionEvent();
+        //onStartMission = new MissionEvent();
+        missions = GetComponentsInChildren<Mission>(true);
+
     }
 
     private void Start()

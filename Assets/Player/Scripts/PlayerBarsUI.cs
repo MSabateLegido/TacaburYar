@@ -5,12 +5,11 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 
-public class PlayerUI : MonoBehaviour
+public class PlayerBarsUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private Image hpBar;
     [SerializeField] private Image hpRedBar;
-    [SerializeField] private Camera mapCamera;
     
     void Start()
     {
@@ -29,10 +28,5 @@ public class PlayerUI : MonoBehaviour
         hpText.text = currentHp + "/" + maxHp;
         hpBar.fillAmount = currentHp / maxHp;
         hpRedBar.fillAmount = currentHp / maxHp;
-    }
-
-    public void OnOpenMap()
-    {
-        mapCamera.gameObject.SetActive(!mapCamera.gameObject.activeSelf);
     }
 }

@@ -14,11 +14,20 @@ public class UIManager : MonoBehaviour
         foreach (UIComponent menu in GetComponentsInChildren<UIComponent>(true))
         {
             menus.Add(menu.GetName(), menu);
-            menu.ActiveMenu(false);
+            menu.ActiveMenu(true);
         }
         currentMenu = menus[mainMenuKey];
         currentMenu.ActiveMenu(true);
     }
+
+    private void Start()
+    {
+        menus["Missions"].ActiveMenu(false);
+        menus["Map"].ActiveMenu(false);
+        menus["Inventory"].ActiveMenu(false);
+    }
+
+
 
     public void SetCurrentMenu(string key)
     {

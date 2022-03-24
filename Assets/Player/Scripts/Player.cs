@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     private PlayerStats playerStats;
     private PlayerAnimation playerAnimations;
     private PlayerLevel playerLevel;
-    private PlayerUI playerUI;
+    private PlayerBarsUI playerUI;
     private PlayerHunger playerHunger;
 
 
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
         playerAnimations = GetComponent<PlayerAnimation>();
         playerStats = GetComponent<PlayerStats>();
         playerLevel = GetComponent<PlayerLevel>();
-        playerUI = GetComponent<PlayerUI>();
+        playerUI = GetComponent<PlayerBarsUI>();
         inventory = GetComponent<PlayerInventory>();
         equipment = GetComponentInChildren<PlayerEquipmentSet>();
         playerHunger = GetComponent<PlayerHunger>();
@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
         return playerLevel;
     }
 
-    public PlayerUI UserInterface()
+    public PlayerBarsUI UserInterface()
     {
         return playerUI;
     }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class FloatEvent : UnityEvent<float> { }
+public class StatsEvent : UnityEvent<Stats> { }
 
 public class PlayerStats : MonoBehaviour
 {
-    [HideInInspector] public FloatEvent onSpeedChange;
+    [HideInInspector] public StatsEvent onStatsChange = new StatsEvent();
 
     [SerializeField] StatsScriptableObject playerBaseStats;
     private Stats currentStats;
@@ -16,16 +16,15 @@ public class PlayerStats : MonoBehaviour
 
     private PlayerEquipmentSet playerEquipment;
     private PlayerLevel playerLevel;
-    private PlayerUI playerUI;
+    private PlayerBarsUI playerUI;
     // Start is called before the first frame update
     void Awake()
     {
         currentStats = new Stats(playerBaseStats.GetStats());
-        onSpeedChange = new FloatEvent();
         currentHp = currentStats.GetHP();
         playerEquipment = GetComponentInChildren<PlayerEquipmentSet>();
         playerLevel = GetComponent<PlayerLevel>();
-        playerUI = GetComponent<PlayerUI>();
+        playerUI = GetComponent<PlayerBarsUI>();
     }
 
     private void Start()
@@ -47,7 +46,7 @@ public class PlayerStats : MonoBehaviour
         currentStats.AddStats(playerEquipment.GetEquipmentStats());
         currentStats.AddStats(playerLevel.GetLevelStats());
         playerUI.UpdateLifeBarStats(currentHp, currentStats.GetHP());
-        onSpeedChange.Invoke(currentStats.GetSpeed());
+        onStatsChange.Invoke(currentStats);
     }
 
     private void OnLevelUp()

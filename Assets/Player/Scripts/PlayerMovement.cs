@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         Player.Instance().Attack().onEndHit.AddListener(OnEndHit);
         Player.Instance().Attack().onPerformAttack.AddListener(OnPerformAttack);
         Player.Instance().Attack().onEndAttack.AddListener(OnEndAttack);
-        Player.Instance().Stats().onSpeedChange.AddListener(OnSpeedChange);
+        Player.Instance().Stats().onStatsChange.AddListener(OnSpeedChange);
         Player.Instance().Inventory().onOpenInventory.AddListener(OnPlayerOpenInventory);
     }
 
@@ -109,9 +109,9 @@ public class PlayerMovement : MonoBehaviour
         SetMovement(true);
     }
 
-    private void OnSpeedChange(float newSpeed)
+    private void OnSpeedChange(Stats newStats)
     {
-        speed = newSpeed;
+        speed = newStats.GetSpeed();
     }
 
     private void OnPlayerOpenInventory(bool opened)
